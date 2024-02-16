@@ -213,7 +213,17 @@ export const TypewriterEffectEditable = ({
         1000,
         "Information Technology",
         1000,
-        "Legal Headhunting\nServices",
+        "Legal",
+        1000,
+        "Human Ressources",
+        1000,
+        "Sales",
+        1000,
+        "Marketing",
+        1000,
+        "Operations",
+        1000,
+        "You name it !",
       ]}
       speed={72}
       repeat={Infinity}
