@@ -8,6 +8,7 @@
 }
 html {
   scroll-behavior: smooth;
+  font-size: large;
 }
 .font-citadel {
   font-family: "Citadel", sans-serif;

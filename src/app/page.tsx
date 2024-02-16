@@ -31,15 +31,21 @@ function Page({}: Props) {
   return (
     <section
       className={
-        "min-h-screen bg-gradient-to-tr from-gray-300 dark:from-muted to-secondary border border-red-500 flex flex-col items-center justify-center"
+        "min-h-screen bg-gradient-to-tr from-gray-300 dark:from-muted to-secondary flex flex-col items-center justify-center"
       }
     >
-      <div className="flex flex-row w-full justify-around items-center  p-20">
+      <div className="flex h-screen flex-row w-full justify-around items-center  p-20">
         <div className="flex flex-col justify-center items-center gap-5 h-full ">
           <h1 className="text-5xl">Recruitment Agency</h1>
           <h1 className={cn("text-5xl", fontGreatVibes.className)}>
             Niche Specialisation
           </h1>
+          <p className="max-w-[50%]">
+            Welcome to Into Being Placements we are a specialised headhunting
+            and talent acquisition agency. Providing you with recruitment and
+            human capital solutions for your business. Let our talent find you
+            talent.
+          </p>
           <TypewriterEffectEditable className="min-h-20" />
           <div className="flex flex-row gap-3">
             <Button className="">Find Jobs</Button>
@@ -55,13 +61,6 @@ function Page({}: Props) {
           className="rounded-full"
         />
       </div>
-      {Array(10)
-        .fill("Some values")
-        .map((_, i) => (
-          <div key={i} className="h-20 ">
-            Some very long text that is going to be displayed
-          </div>
-        ))}
       <div id="services">Our Services</div>
       {Array(10)
         .fill("Some values")

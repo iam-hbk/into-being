@@ -22,13 +22,13 @@ export function ModeToggle() {
     // <DropdownMenu>
     //   <DropdownMenuTrigger asChild>
     <Button
-      variant="secondary"
-      className="rounded-full"
+      variant="ghost"
+      className="rounded-lg border flex gap-3 "
       // size="icon"
       onClick={toggleTheme}
     >
-      <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100  transition-all dark:-rotate-90 dark:scale-0" />
-      <Moon className="h-[1.2rem] mr-2 w-[1.2rem] rotate-90  scale-0 transition-all dark:rotate-0 dark:scale-100" />
+      <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 dark:hidden  transition-all dark:-rotate-90 dark:scale-0" />
+      <Moon className="h-[1.2rem] w-[1.2rem] rotate-90 hidden dark:flex  scale-0 transition-all dark:rotate-0 dark:scale-100" />
       <span className="">Toggle theme</span>
     </Button>
     //   </DropdownMenuTrigger>
