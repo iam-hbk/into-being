@@ -59,7 +59,9 @@ function Page({}: Props) {
           className="rounded-full"
         />
       </div>
-      <div className="text-7xl font-bold p-4" id="services">Our Services</div>
+      <div className="text-bigtitle p-4 text-7xl font-bold" id="services">
+        Our Services
+      </div>
       {Array(10)
         .fill("Some values")
         .map((_, i) => (

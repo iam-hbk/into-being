@@ -1,4 +1,6 @@
+import { title } from "process";
 import type { Config } from "tailwindcss";
+import { DEFAULT_CIPHERS } from "tls";
 const { fontFamily } = require("tailwindcss/defaultTheme");
 const config = {
   darkMode: ["class"],
@@ -31,6 +33,10 @@ const config = {
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
+        },
+        bigtitle: {
+          DEFAULT: "hsl(var(--big-title-color))",
+          foreground: "hsl(var(--big-title-color-foreground))",
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
