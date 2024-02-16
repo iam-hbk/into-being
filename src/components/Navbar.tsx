@@ -76,10 +76,10 @@ export function Navbar() {
       style={{
         top: visible ? "0" : "-130px",
       }}
-      className="mt-4  z-50 p-3 transition-all duration-500  fixed top-5 w-full"
+      className="fixed  top-5 z-50 mt-4 w-full  p-3 transition-all duration-500"
     >
       {/* Wrapper */}
-      <div className="rounded-lg bg-none flex flex-row justify-between p-2 ">
+      <div className="flex flex-row justify-between rounded-lg bg-none p-2 ">
         <NavigationMenu>
           <NavigationMenuList>
             <NavigationMenuItem>
@@ -176,7 +176,7 @@ const ListItem = React.forwardRef<
           ref={ref}
           className={cn(
             "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-            className
+            className,
           )}
           {...props}
         >

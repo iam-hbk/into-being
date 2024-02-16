@@ -30,12 +30,10 @@ function Page({}: Props) {
   ];
   return (
     <section
-      className={
-        "min-h-screen bg-gradient-to-tr from-gray-300 dark:from-muted to-secondary flex flex-col items-center justify-center"
-      }
+      className={"flex min-h-screen flex-col items-center justify-center"}
     >
-      <div className="flex h-screen flex-row w-full justify-around items-center  p-20">
-        <div className="flex flex-col justify-center items-center gap-5 h-full ">
+      <div className="flex h-screen w-full flex-row items-center justify-around bg-gradient-to-tr from-gray-300 to-secondary p-20 dark:from-muted">
+        <div className="flex h-full flex-col items-center justify-center gap-5 ">
           <h1 className="text-5xl">Recruitment Agency</h1>
           <h1 className={cn("text-5xl", fontGreatVibes.className)}>
             Niche Specialisation
@@ -61,7 +59,7 @@ function Page({}: Props) {
           className="rounded-full"
         />
       </div>
-      <div id="services">Our Services</div>
+      <div className="text-7xl font-bold p-4" id="services">Our Services</div>
       {Array(10)
         .fill("Some values")
         .map((_, i) => (
