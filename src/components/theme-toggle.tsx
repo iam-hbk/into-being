@@ -22,8 +22,8 @@ export function ModeToggle() {
     // <DropdownMenu>
     //   <DropdownMenuTrigger asChild>
     <Button
-      variant="ghost"
-      className="rounded-lg border flex gap-3 "
+      variant="toggle"
+      className="rounded-lg border flex gap-3"
       // size="icon"
       onClick={toggleTheme}
     >

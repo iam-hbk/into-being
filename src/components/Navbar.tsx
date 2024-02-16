@@ -74,9 +74,12 @@ export function Navbar() {
   return (
     <nav
       style={{
-        top: visible ? "0" : "-130px",
+        // top: visible ? "0" : "-130px",
+        opacity: visible ? "1" : "0.2",
       }}
-      className="fixed  top-5 z-50 mt-4 w-full  p-3 transition-all duration-500"
+      onMouseEnter={() => setVisible(true)}
+      // onMouseLeave={() => setVisible(false)}
+      className="fixed z-50 w-full  bg-white/30 p-3 shadow-sm   backdrop-blur-md transition-all duration-500"
     >
       {/* Wrapper */}
       <div className="flex flex-row justify-between rounded-lg bg-none p-2 ">
