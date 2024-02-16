@@ -2,6 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { motion, stagger, useAnimate, useInView } from "framer-motion";
+import { TypeAnimation } from "react-type-animation";
 import { useEffect } from "react";
 
 export const TypewriterEffect = ({
@@ -182,5 +183,40 @@ export const TypewriterEffectSmooth = ({
         )}
       ></motion.span>
     </div>
+  );
+};
+
+type TypewriterEffectEditableProps = {
+  words: {
+    text: string;
+    className?: string;
+  }[];
+  className?: string;
+  cursorClassName?: string;
+};
+
+export const TypewriterEffectEditable = ({
+  className,
+}: {
+  className?: string;
+}) => {
+  return (
+    <TypeAnimation
+      className={cn(
+        "text-2xl font-bold text-primary-content text-center",
+        className
+      )}
+      style={{ whiteSpace: "pre-line" }}
+      sequence={[
+        1000,
+        "Finance",
+        1000,
+        "Information Technology",
+        1000,
+        "Legal Headhunting\nServices",
+      ]}
+      speed={72}
+      repeat={Infinity}
+    />
   );
 };
