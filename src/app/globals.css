@@ -30,6 +30,9 @@ html {
     --secondary: 0 0% 96%;
     --secondary-foreground: 0 0% 5%;
 
+    --tertiary: 42 34% 64%;
+    --tertiary-foreground: 24 4% 23%;
+
     --big-title-color: 24 4% 23%;
     --big-title-color-foreground: 0 0% 98%;
 
@@ -64,6 +67,9 @@ html {
 
     --secondary: 30 5% 15%;
     --secondary-foreground: 0 0% 98%;
+
+    --tertiary: 24 4% 23%;
+    --tertiary-foreground: 42 36% 83%;
 
     --big-title-color: 24 20% 80%;
     --big-title-color-foreground: 0 0% 98%;

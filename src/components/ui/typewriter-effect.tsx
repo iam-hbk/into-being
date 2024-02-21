@@ -208,24 +208,16 @@ export const TypewriterEffectEditable = ({
       )}
       style={{ whiteSpace: "pre-line" }}
       sequence={[
-        1000,
-        "Finance",
-        1000,
         "Information Technology",
-        1000,
+        1700,
+        "Finance",
+        1700,
         "Legal",
-        1000,
-        "Human Ressources",
-        1000,
-        "Sales",
-        1000,
-        "Marketing",
-        1000,
-        "Operations",
-        1000,
-        "You name it !",
+        1700,
+        "Sales and Marketing",
+        1700,
       ]}
-      speed={72}
+      speed={65}
       repeat={Infinity}
     />
   );

@@ -34,6 +34,10 @@ const config = {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
         },
+        tertiary: {
+          DEFAULT: "hsl(var(--tertiary))",
+          foreground: "hsl(var(--tertiary-foreground))",
+        },
         bigtitle: {
           DEFAULT: "hsl(var(--big-title-color))",
           foreground: "hsl(var(--big-title-color-foreground))",
@@ -73,10 +77,17 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        scroll: {
+          to: {
+            transform: "translate(calc(-50% - 0.5rem))",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        scroll:
+          "scroll var(--animation-duration, 30s) var(--animation-direction, forwards) linear infinite",
       },
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
@@ -85,5 +96,6 @@ const config = {
   },
   plugins: [require("tailwindcss-animate")],
 } satisfies Config;
+
 
 export default config;

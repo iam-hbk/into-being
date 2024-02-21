@@ -14,9 +14,9 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import Image from "next/image";
 import { ModeToggle } from "./theme-toggle";
-import SmoothLink from "./smooth-link";
+import Image from "next/image";
+import { AspectRatio } from "./ui/aspect-ratio";
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -95,34 +95,18 @@ export function Navbar() {
             <NavigationMenuItem>
               <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
               <NavigationMenuContent>
-                <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-                  <li className="row-span-3">
-                    <NavigationMenuLink asChild>
-                      <a
-                        className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                        href="/"
-                      >
-                        <span>SHADCN</span>
-                        <div className="mb-2 mt-4 text-lg font-medium">
-                          shadcn/ui
-                        </div>
-                        <p className="text-sm leading-tight text-muted-foreground">
-                          Beautifully designed components that you can copy and
-                          paste into your apps. Accessible. Customizable. Open
-                          Source.
-                        </p>
-                      </a>
-                    </NavigationMenuLink>
-                  </li>
-                  <ListItem href="/docs" title="Introduction">
-                    Re-usable components built using Radix UI and Tailwind CSS.
+                <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px]">
+                  <ListItem href="/submit" title="Available Positions">
+                    Easily find your next role with our intuitive job search
+                    tool. Use filters to narrow down options by location,
+                    industry, and experience.
                   </ListItem>
-                  <ListItem href="/docs/installation" title="Installation">
+                  <ListItem href="/submit" title="Submit CV">
                     How to install dependencies and structure your app.
                   </ListItem>
                   <ListItem
                     href="/docs/primitives/typography"
-                    title="Typography"
+                    title="Submit a Vacancy"
                   >
                     Styles for headings, paragraphs, lists...etc
                   </ListItem>
@@ -153,7 +137,7 @@ export function Navbar() {
               </Link>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <Link href="#services" legacyBehavior passHref>
+              <Link href="/#services" legacyBehavior passHref>
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                   Services
                 </NavigationMenuLink>
