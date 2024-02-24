@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Urbanist as FontSans } from "next/font/google";
 import "./globals.css";
-import "animate.css/animate.compat.css"
 import { Navbar } from "@/components/nav-bar";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
