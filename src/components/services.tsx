@@ -6,6 +6,7 @@ import Assessments from "@/assets/images/assessments.jpg";
 import Job_Profiling from "@/assets/images/job-profiling.jpg";
 import Salary_Benchmarking from "@/assets/images/salary-benchmarking.jpg";
 import { PinContainer } from "@/components/ui/3d-pin";
+import ScrollAnimation from "react-animate-on-scroll";
 type Props = {};
 const SERVICES = [
   {
@@ -42,44 +43,47 @@ const SERVICES = [
 
 const Services = (props: Props) => {
   return (
-    <div className="flex min-h-screen flex-col items-center p-10">
-      <div className="p-4 text-7xl font-bold text-bigtitle" id="services">
-        Our Services
-      </div>
-      <p className="max-w-screen-sm text-center">
-        Our recruiting expects are available to you across all sectors and
-        industries; We assess skills and achievement and fulfill comprehensive
-        career planning which is made available to clients Engineering, Banking,
-        Mining, Freight, Pharmaceutical, Legal, FMCG, Retail and Distribution
-        requirements, minimising client time spent on CV screening saving you
-        time and money ensure a long-term partnership built on trust.
-      </p>
-      <div className=" mt-10 flex flex-wrap justify-center rounded-md bg-secondary p-3 py-10">
-        {SERVICES.map((service) => (
-          <div
-            key={service.title}
-            className="flex items-center justify-center "
-          >
-            <PinContainer title={service.description} href="">
-              <div className="flex h-[16rem] w-[16rem] basis-full flex-col tracking-tight text-slate-100/50 sm:basis-1/2 ">
-                <div className=" flex max-h-[77%] w-full flex-1">
-                  <Image
-                    src={service.image}
-                    alt={service.title}
-                    className="imageo rounded-md object-cover"
-                    height={400}
-                    width={400}
-                  />
+    <>
+      <div className="animate__animated animate__fadeInUp flex min-h-screen flex-col items-center p-10">
+        <div className="p-4 text-7xl font-bold text-bigtitle" id="services">
+          Our Services
+        </div>
+        <p className="max-w-screen-sm text-center">
+          Our recruiting expects are available to you across all sectors and
+          industries; We assess skills and achievement and fulfill comprehensive
+          career planning which is made available to clients Engineering,
+          Banking, Mining, Freight, Pharmaceutical, Legal, FMCG, Retail and
+          Distribution requirements, minimising client time spent on CV
+          screening saving you time and money ensure a long-term partnership
+          built on trust.
+        </p>
+        <div className=" mt-10 flex flex-wrap justify-center rounded-md bg-secondary p-3 py-10">
+          {SERVICES.map((service) => (
+            <div
+              key={service.title}
+              className="flex items-center justify-center "
+            >
+              <PinContainer title={service.description} href="">
+                <div className="flex h-[16rem] w-[16rem] basis-full flex-col tracking-tight text-slate-100/50 sm:basis-1/2 ">
+                  <div className=" flex max-h-[77%] w-full flex-1">
+                    <Image
+                      src={service.image}
+                      alt={service.title}
+                      className="imageo rounded-md object-cover"
+                      height={400}
+                      width={400}
+                    />
+                  </div>
+                  <h3 className="max-w-xs p-2 text-lg  font-bold text-secondary-foreground">
+                    {service.title}
+                  </h3>
                 </div>
-                <h3 className="max-w-xs p-2 text-lg  font-bold text-secondary-foreground">
-                  {service.title}
-                </h3>
-              </div>
-            </PinContainer>
-          </div>
-        ))}
+              </PinContainer>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
