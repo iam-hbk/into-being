@@ -10,32 +10,20 @@ const AboutUs = (props: Props) => {
         About Us
       </div>
       <p className="mt-4 max-w-screen-sm text-center">
-        <b className="font-bold text-primary">IntoBeing Placements</b> is an
-        APSO certified recruitment agency based in Randburg. We specialise in
-        talent search and placements of candidates within the fields of{" "}
-        <b className="font-bold text-primary">
-          IT, Legal, Finance, Human Resources, Sales and Marketing and
-          Operations
-        </b>{" "}
-        across all industries, providing sound advice, professional
-        consultancyand resources within these niche areas for both permanent and
-        contract positions. At{" "}
-        <b className="font-bold text-primary">IntoBeing Placements</b> we drive
-        a culture of excellence, diligence and accountability and this is the
-        culture we encourage with our candidates and clients. We believe in
-        quality over quantity, ensuring that we provide matched skills and
-        culture accuracy by applying our intensive process of behavioural based
-        method when screening and interviewing candidates with an ultimate goal
-        of matching them to the right role and organisation.
+        <b className="font-bold text-primary">IntoBeing Placements</b> is a
+        specialized recruitment agency focusing on{" "}
+        <b className="font-bold text-primary"> Finance, IT, and Legal</b>{" "}
+        headhunting and talent search for all permanent, contract and temporary
+        positions. The company consist of young entrepreneurs with extensive
+        recruitment knowledge and experience within our niche market across
+        numerous industries providing sound advice, professional consultancy and
+        resources within these niche areas. We are recognised for our
+        professionalism, excellence, diligence and our rapid turn-around times
+        and exceptionally high ethical standards which translate to the quality
+        of our candidates we serve.
       </p>
-      <div className="mt-4 p-4 text-7xl font-bold" id="services">
-        Who We Have Worked With
-      </div>
-      <p className="mt-4 max-w-screen-sm text-center">
-        We have worked with a number of clients in the past, some of whom are
-        listed below:
-      </p>
-      <WorkedWith />
+      
+      {/* <WorkedWith /> */}
     </div>
   );
 };

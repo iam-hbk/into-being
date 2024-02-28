@@ -17,11 +17,16 @@ import WerksmansLogo from "@/assets/images/Werksmans-logo 1.png";
 
 export function WorkedWith() {
   return (
-    <InfiniteMovingCards
-      items={logos}
-      direction="right"
-      speed="normal"
-    />
+    <>
+      <div className="mt-4 p-4 text-7xl font-bold" id="services">
+        Who We Have Worked With
+      </div>
+      <p className="mt-4 max-w-screen-sm text-center">
+        We have worked with a number of clients in the past, some of whom are
+        listed below:
+      </p>
+      <InfiniteMovingCards items={logos} direction="right" speed="normal" />
+    </>
   );
 }
 
