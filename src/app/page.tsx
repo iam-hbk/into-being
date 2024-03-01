@@ -1,9 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Logo from "@/assets/images/logo-transparent.png";
-import {
-  TypewriterEffectEditable,
-} from "@/components/ui/typewriter-effect";
+import { TypewriterEffectEditable } from "@/components/ui/typewriter-effect";
 import { cn } from "@/lib/utils";
 import { Great_Vibes } from "next/font/google";
 import { Button } from "@/components/ui/button";
@@ -53,17 +51,19 @@ function Page({}: Props) {
         </div>
 
         <Image
+          priority
           src={Logo}
           alt="logo"
           height={500}
           width={500}
-          className="rounded-full"
+          className="rounded-full w-450 h-auto"
         />
       </div>
       {/* Services Section */}
       <Services />
       {/* About Us */}
       <AboutUs />
+      
     </section>
   );
 }
