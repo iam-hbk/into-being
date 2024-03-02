@@ -10,10 +10,19 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import { toast } from "sonner";
 
 import { z } from "zod";
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "./ui/form";
 
 const formSchema = z.object({
   nationality: z.string().min(1, "Nationality is required"),
@@ -24,195 +33,253 @@ const formSchema = z.object({
   email: z.string().email("Invalid email address"),
   ethnicity: z.string().min(1, "Ethnicity is required"),
   currentSalaryRate: z.string().min(1, "Current Salary Rate is required"),
-  currentSalary: z.string().optional(), // This might be optional or required based on your logic
-  cvUpload: z.any(), // Adjust based on how you handle file uploads
+  currentSalary: z
+    .string()
+    .min(
+      1,
+      "Current Salary is required, select the lowest option if you have no salary",
+    ),
+  cvUpload: z.any(),
 });
 
 export default function SubmitCVForm() {
-  const [salaryOptions, setSalaryOptions] = useState<
-    typeof salaryOptions_.annually | null
-  >(null);
-
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      nationality: "",
+      idNumber: "",
+      firstName: "",
+      lastName: "",
+      mobileNumber: "",
+      email: "",
+      ethnicity: "",
+      currentSalaryRate: "hourly",
+      currentSalary: "",
+    },
+  });
   const {
-    register,
     handleSubmit,
     control,
     formState: { errors },
-  } = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-  });
-
-  const handleSalaryRateChange = (e: string) => {
-    console.log("NEW SALARY:", e);
-    switch (e) {
-      case "hourly":
-        setSalaryOptions(salaryOptions_.hourly);
-        break;
-      case "monthly":
-        setSalaryOptions(salaryOptions_.monthly);
-        break;
-      case "annually":
-        setSalaryOptions(salaryOptions_.annually);
-        break;
-      default:
-        setSalaryOptions(null);
-    }
-  };
+  } = form;
 
   const onSubmit = (data: z.infer<typeof formSchema>) => {
-    console.log(data);
+    toast.success("Form submitted successfully", {
+      description: (
+        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
+          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
+        </pre>
+      ),
+      duration: 3000,
+    });
     // Handle form submission
   };
 
   return (
     <div className="mx-auto w-[60svw] max-w-7xl rounded-lg bg-background p-6 shadow-lg">
-      <h1 className="m-4 mb-6 text-3xl font-bold lg:text-5xl">
-        Upload Your CV
-      </h1>
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="grid grid-cols-1 gap-6 md:grid-cols-2"
-      >
-        <div className="flex flex-col space-y-2">
-          <label className="font-medium" htmlFor="nationality">
-            Nationality *
-          </label>
-          <Select {...register("nationality")}>
-            <SelectTrigger id="nationality">
-              <SelectValue placeholder="Select an Option" />
-            </SelectTrigger>
-            <SelectContent position="popper">
-              <SelectItem value="asian">African</SelectItem>
-              <SelectItem value="black">Asian</SelectItem>
-              <SelectItem value="black">White</SelectItem>
-              <SelectItem value="black">Coulered</SelectItem>
-              <SelectItem value="black">Indian</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
-        <div className="flex flex-col space-y-2">
-          <label className="font-medium" htmlFor="idNumber">
-            ID Number *
-          </label>
-          <Input
-            {...register("idNumber")}
-            id="idNumber"
-            placeholder="ID Number"
+      <Form {...form}>
+        <h1 className="m-4 mb-6 text-3xl font-bold lg:text-5xl">
+          Submit Your CV
+        </h1>
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
+        >
+          <FormField
+            control={control}
+            name="nationality"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Nationality *</FormLabel>
+                <Select
+                  onValueChange={(value) => field.onChange(value)}
+                  defaultValue={field.value}
+                >
+                  <FormControl>
+                    <SelectTrigger id="nationality">
+                      <SelectValue placeholder="Select an Option" />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent position="popper">
+                    <SelectItem value="southAfrican">South African</SelectItem>
+                    <SelectItem value="other">Other</SelectItem>
+                  </SelectContent>
+                </Select>
+                <FormMessage />
+              </FormItem>
+            )}
           />
-        </div>
-        <div className="flex flex-col space-y-2">
-          <label className="font-medium" htmlFor="firstName">
-            Preferred First Name *
-          </label>
-          <Input
-            {...register("firstName")}
-            id="firstName"
-            placeholder="First Name"
+          <FormField
+            control={control}
+            name="idNumber"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>ID Number *</FormLabel>
+                <Input {...field} id="idNumber" placeholder="ID Number" />
+                <FormMessage />
+              </FormItem>
+            )}
           />
-        </div>
-        <div className="flex flex-col space-y-2">
-          <label className="font-medium" htmlFor="lastName">
-            Last Name *
-          </label>
-          <Input
-            {...register("lastName")}
-            id="lastName"
-            placeholder="Last Name"
+          <FormField
+            control={control}
+            name="firstName"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Preferred First Name *</FormLabel>
+                <Input {...field} id="firstName" placeholder="First Name" />
+                <FormMessage />
+              </FormItem>
+            )}
           />
-        </div>
-        <div className="flex flex-col space-y-2">
-          <label className="font-medium" htmlFor="mobileNumber">
-            Mobile Number *
-          </label>
-          <Input
-            {...register("mobileNumber")}
-            id="mobileNumber"
-            placeholder="Mobile Number"
+          <FormField
+            control={control}
+            name="lastName"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Preferred First Name *</FormLabel>
+                <Input {...field} id="lastName" placeholder="Last Name" />
+                <FormMessage />
+              </FormItem>
+            )}
           />
-        </div>
-        <div className="flex flex-col space-y-2">
-          <label className="font-medium" htmlFor="email">
-            Email *
-          </label>
-          <Input
-            {...register("email")}
-            id="email"
-            placeholder="Email"
-            type="email"
+          <FormField
+            control={control}
+            name="mobileNumber"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Mobile Number *</FormLabel>
+                <Input
+                  {...field}
+                  id="mobileNumber"
+                  placeholder="Mobile Number"
+                />
+                <FormMessage />
+              </FormItem>
+            )}
           />
-        </div>
-        <div className="flex flex-col space-y-2">
-          <label className="font-medium" htmlFor="ethnicity">
-            Ethnicity *
-          </label>
-          <Select {...register("ethnicity")}>
-            <SelectTrigger id="ethnicity">
-              <SelectValue placeholder="Select an Option" />
-            </SelectTrigger>
-            <SelectContent position="popper">
-              <SelectItem value="asian">South African</SelectItem>
-              <SelectItem value="black">Other</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
-        <div className="flex flex-col space-y-2">
-          <label className="font-medium" htmlFor="currentSalaryRate">
-            Current Salary Rate *
-          </label>
-          <Select
-            {...register("currentSalaryRate")}
-            onValueChange={(e) => handleSalaryRateChange(e)}
-          >
-            <SelectTrigger id="currentSalaryRate">
-              <SelectValue placeholder="Select an Option" />
-            </SelectTrigger>
-            <SelectContent position="popper">
-              <SelectItem value="hourly">Hourly</SelectItem>
-              <SelectItem value="monthly">Monthly</SelectItem>
-              <SelectItem value="annually">Annually</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
-        <div className="flex flex-col space-y-2">
-          <label className="font-medium" htmlFor="currentSalary">
-            Current Salary *
-          </label>
-          <Select {...register("currentSalary")} disabled={!salaryOptions}>
-            <SelectTrigger id="currentSalary">
-              <SelectValue placeholder="Select an Option" />
-            </SelectTrigger>
-            <SelectContent position="popper">
-              {salaryOptions?.map((option) => (
-                <SelectItem key={option.value} value={option.value}>
-                  {option.display}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </div>
+          <FormField
+            control={control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Email *</FormLabel>
+                <Input {...field} id="email" placeholder="Email" />
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={control}
+            name="ethnicity"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Ethnicity *</FormLabel>
+                <Select
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                >
+                  <FormControl>
+                    <SelectTrigger id="ethnicity">
+                      <SelectValue placeholder="Select an Option" />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent position="popper">
+                    <SelectItem value="african">African</SelectItem>
+                    <SelectItem value="asian">Asian</SelectItem>
+                    <SelectItem value="white">White</SelectItem>
+                    <SelectItem value="coloured">Coloured</SelectItem>
+                    <SelectItem value="indian">Indian</SelectItem>
+                  </SelectContent>
+                </Select>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={control}
+            name="currentSalaryRate"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Current Salary Rate *</FormLabel>
+                <Select
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                >
+                  <FormControl>
+                    <SelectTrigger id="currentSalaryRate">
+                      <SelectValue placeholder="Select an Option" />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent position="popper">
+                    <SelectItem value="hourly">Hourly</SelectItem>
+                    <SelectItem value="monthly">Monthly</SelectItem>
+                    <SelectItem value="annually">Annually</SelectItem>
+                  </SelectContent>
+                </Select>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={control}
+            name="currentSalary"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Current Salary *</FormLabel>
+                <Select
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                  disabled={!form.getValues("currentSalaryRate")}
+                >
+                  <FormControl>
+                    <SelectTrigger id="currentSalary">
+                      <SelectValue placeholder="Select an Option" />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent position="popper">
+                    {salaryOptions_[
+                      form.getValues("currentSalaryRate") as SALARY_RATES
+                    ].map((option) => (
+                      <SelectItem key={option.value} value={option.value}>
+                        {option.display}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={control}
+            name="cvUpload"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Upload CV *</FormLabel>
+                <input
+                  required
+                  {...field}
+                  className="block w-full text-sm 
+          file:mr-4 file:rounded-md file:border-0
+          file:bg-primary/10 file:px-4
+          file:py-2 file:text-sm
+          file:font-semibold file:text-primary
+          hover:file:bg-primary/20"
+                  id="cvUpload"
+                  type="file"
+                />
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
-        <div className="col-span-2 flex flex-col space-y-2">
-          <label className="font-medium" htmlFor="cvUpload">
-            Upload CV *
-          </label>
-          <input
-            {...register("cvUpload")}
-            className="block w-full text-sm 
-        file:mr-4 file:rounded-md file:border-0
-        file:bg-primary/10 file:px-4
-        file:py-2 file:text-sm
-        file:font-semibold file:text-primary
-        hover:file:bg-primary/20"
-            id="cvUpload"
-            type="file"
-          />
-        </div>
-        <div className="col-span-2 flex w-full flex-row items-center justify-center ">
-          <Button type="submit" size={"lg"} className="w-full max-w-xs">
-            Submit
-          </Button>
-        </div>
-      </form>
+          <div className="col-span-1 flex w-full flex-row items-center justify-center md:col-span-2 lg:col-span-3  ">
+            <Button type="submit" size={"lg"} className="w-full max-w-xs">
+              Submit
+            </Button>
+          </div>
+        </form>
+      </Form>
     </div>
   );
 }
@@ -245,3 +312,5 @@ const salaryOptions_ = {
     { value: "3000000+", display: "R3,000,000+" },
   ],
 };
+
+type SALARY_RATES = "hourly" | "monthly" | "annually";
