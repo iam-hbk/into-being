@@ -96,43 +96,41 @@ export function Navbar() {
               <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
               <NavigationMenuContent>
                 <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px]">
-                  <ListItem href="/submit" title="Available Positions">
+                  <ListItem
+                    href="/available-positions"
+                    title="Available Positions"
+                  >
                     Easily find your next role with our intuitive job search
                     tool. Use filters to narrow down options by location,
                     industry, and experience.
                   </ListItem>
-                  <ListItem href="/submit" title="Submit CV">
+                  <ListItem href="/submit-cv" title="Submit CV">
                     How to install dependencies and structure your app.
                   </ListItem>
-                  <ListItem
-                    href="/docs/primitives/typography"
-                    title="Submit a Vacancy"
-                  >
+                  <ListItem href="/submit-vacancy" title="Submit a Vacancy">
                     Styles for headings, paragraphs, lists...etc
                   </ListItem>
                 </ul>
               </NavigationMenuContent>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <NavigationMenuTrigger>Components</NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-                  {components.map((component) => (
-                    <ListItem
-                      key={component.title}
-                      title={component.title}
-                      href={component.href}
-                    >
-                      {component.description}
-                    </ListItem>
-                  ))}
-                </ul>
-              </NavigationMenuContent>
+              <Link href="/submit-cv" legacyBehavior passHref>
+                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  Submit CV
+                </NavigationMenuLink>
+              </Link>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <Link href="/docs" legacyBehavior passHref>
+              <Link href="/submit-vacancy" legacyBehavior passHref>
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  Documentation
+                  Submit Vacancy
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <Link href="/available-positions" legacyBehavior passHref>
+                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  Available Positions
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>

@@ -58,7 +58,7 @@ export function WhyChooseUsCarousel() {
       opts={{
         loop: true,
       }}
-      plugins={[Autoplay({ delay: 8000 })]}
+      plugins={[Autoplay({ delay: 6500 })]}
       className="h-64 w-full "
     >
       <CarouselContent>
@@ -97,7 +97,7 @@ const draw = {
       pathLength: {
         delay: 1 + i * 0.5,
         type: "spring",
-        duration: 2,
+        duration: 1,
         bounce: 0,
         repeat: Infinity, // Infinite loop
         repeatType: "mirror", // Use "yoyo" for older versions of Framer Motion

@@ -7,6 +7,7 @@ import Job_Profiling from "@/assets/images/job-profiling.jpg";
 import Salary_Benchmarking from "@/assets/images/salary-benchmarking.jpg";
 import { PinContainer } from "@/components/ui/3d-pin";
 import ScrollAnimation from "react-animate-on-scroll";
+import AnimatedGroup from "./ui/animated-group";
 type Props = {};
 const SERVICES = [
   {
@@ -43,7 +44,7 @@ const SERVICES = [
 
 const Services = (props: Props) => {
   return (
-    <>
+    <AnimatedGroup>
       <div className="animate__animated animate__fadeInUp flex min-h-screen flex-col items-center p-10">
         <div className="p-4 text-7xl font-bold text-bigtitle" id="services">
           Our Services
@@ -83,7 +84,7 @@ const Services = (props: Props) => {
           ))}
         </div>
       </div>
-    </>
+    </AnimatedGroup>
   );
 };
 
