@@ -1,11 +1,12 @@
+import { SubmitCVForm } from "@/components/submit-cv";
 import React from "react";
 
 type Props = {};
 
 const Page = (props: Props) => {
   return (
-    <section className="flex min-h-[50vh] flex-col items-center justify-center">
-      Submit CV
+    <section className="flex min-h-screen flex-col items-center justify-center">
+      <SubmitCVForm />
     </section>
   );
 };
