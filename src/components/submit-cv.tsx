@@ -1,3 +1,8 @@
+/**
+ * v0 by Vercel.
+ * @see https://v0.dev/t/mpD8Ca3c8uD
+ * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
+ */
 import {
   SelectValue,
   SelectTrigger,
@@ -8,10 +13,12 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
-export function SubmitCVForm() {
+export default function SubmitCVForm() {
   return (
-    <div className="mx-auto max-w-5xl rounded-lg border bg-background p-6 shadow-lg">
-      <h1 className="mb-6 text-2xl font-semibold">Upload Your CV</h1>
+    <div className="mx-auto w-[60svw] max-w-7xl rounded-lg bg-background p-6 shadow-lg">
+      <h1 className="mb-6 m-4 text-5xl font-bold">
+        Upload Your CV
+      </h1>
       <form className="grid grid-cols-1 gap-6 md:grid-cols-2">
         <div className="flex flex-col space-y-2">
           <label className="font-medium" htmlFor="nationality">

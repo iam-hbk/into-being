@@ -2,9 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
-import Logo from "@/assets/images/logo-transparent.png";
 import { cn } from "@/lib/utils";
-// import { Icons } from "@/components/icons"
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -15,8 +13,6 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { ModeToggle } from "./theme-toggle";
-import Image from "next/image";
-import { AspectRatio } from "./ui/aspect-ratio";
 
 const components: { title: string; href: string; description: string }[] = [
   {
