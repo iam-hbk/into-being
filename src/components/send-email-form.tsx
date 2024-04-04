@@ -37,9 +37,9 @@ function ContactUsForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: "heritier",
-      email: "rainheritier@gmail.com",
-      message: "a message from the client",
+      name: "",
+      email: "",
+      message: "",
     },
   });
 
@@ -52,7 +52,6 @@ function ContactUsForm() {
         },
         body: JSON.stringify(values),
       });
-
 
       if (response.ok) {
         const d = await response.json();

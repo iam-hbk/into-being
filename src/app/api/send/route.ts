@@ -2,13 +2,18 @@ import { EmailTemplate } from "@/components/email-template";
 import { NextResponse } from "next/server";
 import React from "react";
 import { Resend } from "resend";
+import { string } from "zod";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: Request) {
   try {
     console.log("\n\n\n-----------------");
-    const { name, email, message } = await request.json();
+    let { name, email, message } = await request.json();
+    name =
+      (name as string).charAt(0).toUpperCase() +
+      (name as string).toLowerCase().slice(1);
+    email = email.toLowerCase();
 
     console.log({ name, email, message });
     const sendToTerry = await resend.emails.send({
