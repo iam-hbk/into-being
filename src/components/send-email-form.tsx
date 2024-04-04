@@ -45,7 +45,7 @@ function ContactUsForm() {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
-      const response = await fetch("/api/send-node", {
+      const response = await fetch("/api/send", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -53,8 +53,10 @@ function ContactUsForm() {
         body: JSON.stringify(values),
       });
 
+
       if (response.ok) {
         const d = await response.json();
+        console.log(d);
         toast.success("Email sent successfully", {
           onAutoClose: () => {
             toast.info(

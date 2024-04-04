@@ -1,4 +1,5 @@
 import { EmailTemplate } from "@/components/email-template";
+import { NextResponse } from "next/server";
 import React from "react";
 import { Resend } from "resend";
 
@@ -9,10 +10,11 @@ export async function POST(request: Request) {
     console.log("\n\n\n-----------------");
     const { name, email, message } = await request.json();
 
-    console.log(console.log(name, email, message));
-    const data = await resend.emails.send({
-      from: "Acme <onboarding@resend.dev>",
-      to: ["delivered@resend.dev"],
+    console.log({ name, email, message });
+    const sendToTerry = await resend.emails.send({
+      from: "Intobeing <info@intobeingplacements.co.za>",
+      // to: ["terry@intobeingplacements.co.za"],
+      to: ["nexusthestaff@gmail.com"],
       subject: "Into-Being Website Contact Form Submission",
       react: EmailTemplate({
         firstName: name,
@@ -21,11 +23,32 @@ export async function POST(request: Request) {
       }) as React.ReactElement,
     });
 
-    return Response.json(data);
+    if (sendToTerry.error) {
+      console.error(sendToTerry.error);
+      const error = await NextResponse.error().json();
+      console.error(error);
+      return NextResponse.error();
+    }
+
+    const confirmWithVisitor = await resend.emails.send({
+      from: "Intobeing <info@intobeingplacements.co.za>",
+      to: [email],
+      subject: "Into-Being Placements",
+      text: `Hello ${name},\n\nThank you for reaching out to us. We will get back to you as soon as possible.\n\nBest Regards,\nInto-Being Placements`,
+    });
+    if (confirmWithVisitor.error) {
+      console.error(confirmWithVisitor.error);
+      const error = await NextResponse.error().json();
+      console.error(error);
+      return NextResponse.error();
+    }
+
+    return NextResponse.json({ message: "Email sent successfully" });
 
     // return Response.json({ message: "Email sent successfully from server" });
   } catch (error) {
     console.error(error);
-    return Response.json({ error });
+    return Response.error();
+    // return Response.json({ error });
   }
 }
