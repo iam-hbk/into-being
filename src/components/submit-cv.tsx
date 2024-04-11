@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { upload } from "@vercel/blob/client";
 import { toast } from "sonner";
 
 import { z } from "zod";
@@ -23,6 +23,7 @@ import {
   FormLabel,
   FormMessage,
 } from "./ui/form";
+import { PutBlobResult } from "@vercel/blob";
 
 const formSchema = z.object({
   nationality: z.string().min(1, "Nationality is required"),
@@ -46,15 +47,15 @@ export default function SubmitCVForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      nationality: "",
-      idNumber: "",
-      firstName: "",
-      lastName: "",
-      mobileNumber: "",
-      email: "",
-      ethnicity: "",
+      nationality: "south african",
+      idNumber: "1234567890",
+      firstName: "heritier",
+      lastName: "kaumbu",
+      mobileNumber: "0741221223",
+      email: "delivered@resend.dev",
+      ethnicity: "african",
       currentSalaryRate: "hourly",
-      currentSalary: "",
+      currentSalary: "8000-12000",
     },
   });
   const {
@@ -63,7 +64,43 @@ export default function SubmitCVForm() {
     formState: { errors },
   } = form;
 
-  const onSubmit = (data: z.infer<typeof formSchema>) => {
+  const onSubmit = async (data: z.infer<typeof formSchema>) => {
+    // const cv = Object.values(data.cvUpload)[0] as File;
+    console.log(data);
+    const formData = new FormData();
+    for (const key in data) {
+      if (key === "cvUpload") {
+        formData.append(
+          "cv",
+          data.cvUpload as File,
+          `${data.firstName}-${data.lastName}.pdf`,
+        );
+      } else {
+        formData.append(key, (data as Record<string, string>)[key]);
+      }
+    }
+    try {
+      const response = await fetch(`/api/submit-cv`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: formData,
+      });
+
+      if (response.ok) {
+        const res = (await response.json()) as PutBlobResult;
+        console.log("CV uploaded successfully");
+        console.log(JSON.stringify(res, null, 2));
+        toast.success("CV Uploaded successfully");
+        // form.reset();
+      } else {
+        toast.error("Failed to upload cv" + response.statusText);
+      }
+    } catch (error) {
+      toast.error("Failed to upload cv");
+    }
+
     toast.success("Form submitted successfully", {
       description: (
         <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
@@ -72,6 +109,7 @@ export default function SubmitCVForm() {
       ),
       duration: 3000,
     });
+
     // Handle form submission
   };
 
@@ -258,7 +296,6 @@ export default function SubmitCVForm() {
                 <FormLabel>Upload CV *</FormLabel>
                 <input
                   required
-                  {...field}
                   className="block w-full text-sm 
           file:mr-4 file:rounded-md file:border-0
           file:bg-primary/10 file:px-4
@@ -267,6 +304,13 @@ export default function SubmitCVForm() {
           hover:file:bg-primary/20"
                   id="cvUpload"
                   type="file"
+                  onChange={(e) => {
+                    console.log(e.target.files);
+                    const file = e.target.files?.[0];
+                    if (file) {
+                      field.onChange(file);
+                    }
+                  }}
                 />
                 <FormMessage />
               </FormItem>
