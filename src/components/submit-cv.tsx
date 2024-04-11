@@ -40,7 +40,7 @@ const formSchema = z.object({
       1,
       "Current Salary is required, select the lowest option if you have no salary",
     ),
-  cvUpload: z.any(),
+  cvUpload: z.instanceof(File),
 });
 
 export default function SubmitCVForm() {
@@ -72,19 +72,16 @@ export default function SubmitCVForm() {
       if (key === "cvUpload") {
         formData.append(
           "cv",
-          data.cvUpload as File,
+          data.cvUpload,
           `${data.firstName}-${data.lastName}.pdf`,
         );
       } else {
-        formData.append(key, (data as Record<string, string>)[key]);
+        formData.append(key, data[key as keyof typeof data]);
       }
     }
     try {
       const response = await fetch(`/api/submit-cv`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
         body: formData,
       });
 
@@ -305,6 +302,7 @@ export default function SubmitCVForm() {
                   id="cvUpload"
                   type="file"
                   onChange={(e) => {
+                    console.log("file changed");
                     console.log(e.target.files);
                     const file = e.target.files?.[0];
                     if (file) {
@@ -318,8 +316,13 @@ export default function SubmitCVForm() {
           />
 
           <div className="col-span-1 flex w-full flex-row items-center justify-center md:col-span-2 lg:col-span-3  ">
-            <Button type="submit" size={"lg"} className="w-full max-w-xs">
-              Submit
+            <Button
+              type="submit"
+              size={"lg"}
+              disabled={form.formState.isSubmitting}
+              className="w-full max-w-xs"
+            >
+              {!form.formState.isSubmitting ? "Submit" : "Loading..."}
             </Button>
           </div>
         </form>

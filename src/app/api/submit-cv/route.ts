@@ -1,19 +1,19 @@
-import { put } from '@vercel/blob';
+import { put } from "@vercel/blob";
 import { NextResponse } from "next/server";
 
 export async function GET(request: Request) {
   return new Response("Not implemented", { status: 501 });
 }
 export async function POST(request: Request): Promise<NextResponse> {
-  const reqJSON = await request.json();
- 
-  // const blob = await put(filename, request.body, {
-  //   access: 'public',
-  // });
+  const reqFormData = await request.formData();
+  const file = reqFormData.get("cv") as File;
 
-  console.log("Form data", reqJSON);
+  const blob = await put(file.name, file, {
+    access: "public",
+  });
+
   return NextResponse.json(
-    { message: "Your CV has been submitted successfully" },
+    { message: "Your CV has been submitted successfully", ...blob },
     {
       status: 201,
     },
