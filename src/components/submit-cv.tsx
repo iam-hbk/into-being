@@ -9,7 +9,6 @@ import {
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { upload } from "@vercel/blob/client";
 import { toast } from "sonner";
 
 import { z } from "zod";
@@ -40,7 +39,7 @@ const formSchema = z.object({
       1,
       "Current Salary is required, select the lowest option if you have no salary",
     ),
-  cvUpload: z.instanceof(File),
+  cvUpload: z.instanceof(Blob),
 });
 
 export default function SubmitCVForm() {
