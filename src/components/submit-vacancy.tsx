@@ -28,6 +28,7 @@ import { Textarea } from "./ui/textarea";
 const formSchema = z
   .object({
     nameAndSurname: z.string().min(1, "Name and Surname are required"),
+    companyName: z.string(),
     contactNumber: z.string().min(1, "Contact Number is required"),
     email: z.string().email("Invalid email address"),
     heardAboutUs: z.string(),
@@ -35,6 +36,7 @@ const formSchema = z
     niche: z.string().min(1, "Niche is required"),
     workModel: z.string().min(1, "Work Model is required"),
     region: z.string().min(1, "Region is required"),
+    jobTitle: z.string(),
     otherRegion: z.string().optional(),
     vacancyDetails: z.string().min(1, "Details about the vacancy are required"),
     vacancyFile: z.instanceof(File),
@@ -58,12 +60,14 @@ const formSchema = z
     }
     // return data;
   });
-
+export type SubmitVacancyFormData = z.infer<typeof formSchema>;
 export default function SubmitVacancy() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       nameAndSurname: "heritier kaumbu",
+      companyName: "Resend",
+      jobTitle: "Finance Manager",
       contactNumber: "0741221223",
       email: "delivered@resend.dev",
       heardAboutUs: "other",
@@ -71,14 +75,11 @@ export default function SubmitVacancy() {
       niche: "finance",
       region: "other",
       otherRegion: "Zambia",
+      workModel: "remote",
       vacancyDetails: "This is a vacancy for a finance manager",
     },
   });
-  const {
-    handleSubmit,
-    control,
-    formState: { errors },
-  } = form;
+  const { handleSubmit, control } = form;
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     const date = new Date();
@@ -89,7 +90,7 @@ export default function SubmitVacancy() {
     const formData = new FormData();
     for (const key in data) {
       if (key === "vacancyFile") {
-        formData.append("cv", data.vacancyFile, fileName);
+        formData.append("vacancy", data.vacancyFile, fileName);
       } else {
         if (
           (key === "otherHeardAboutUs" || key === "otherRegion") &&
@@ -108,7 +109,7 @@ export default function SubmitVacancy() {
     }
     try {
       const response = await fetch(`/api/submit-vacancy`, {
-        method: "POST",
+        method: "PUT",
         body: formData,
       });
 
@@ -117,22 +118,12 @@ export default function SubmitVacancy() {
         console.log("Vacancy uploaded successfully");
         console.log(JSON.stringify(res, null, 2));
         toast.success("Vacancy Uploaded successfully");
-        // form.reset();
       } else {
         toast.error("Failed to upload vacancy" + response.statusText);
       }
     } catch (error) {
       toast.error("Failed to upload vacancy");
     }
-
-    toast.success("Form submitted successfully", {
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-      duration: 3000,
-    });
 
     // Handle form submission
   };
@@ -331,6 +322,36 @@ export default function SubmitVacancy() {
               >
                 <FormLabel>Please specify the region</FormLabel>
                 <Input {...field} id={field.name} placeholder="Other" />
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={control}
+            name="jobTitle"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Job Title*</FormLabel>
+                <Input
+                  {...field}
+                  id={field.name}
+                  placeholder="What is the name of the Job ?"
+                />
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={control}
+            name="companyName"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Company Name*</FormLabel>
+                <Input
+                  {...field}
+                  id={field.name}
+                  placeholder="What is the name of the company ?"
+                />
                 <FormMessage />
               </FormItem>
             )}

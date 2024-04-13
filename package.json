@@ -3,11 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "yolo":"git add . && git commit -m 'yolo' && git push",
+    "yolo": "git add . && git commit -m 'yolo' && git push",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "open-studio": "npx drizzle-kit studio",
+    "migrate": "npx drizzle-kit generate:sqlite",
+    "push-db": "npx drizzle-kit push:sqlite",
+    "pull-db": "npx drizzle-kit introspect:sqlite"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
@@ -19,8 +23,8 @@
     "@radix-ui/react-navigation-menu": "^1.1.4",
     "@radix-ui/react-select": "^2.0.0",
     "@radix-ui/react-slot": "^1.0.2",
-    "@typescript-eslint/eslint-plugin": "^7.2.0",
-    "@typescript-eslint/parser": "^7.2.0",
+    "@typescript-eslint/eslint-plugin": "^7.6.0",
+    "@typescript-eslint/parser": "^7.6.0",
     "@uploadthing/react": "^6.3.2",
     "@vercel/blob": "^0.22.3",
     "class-variance-authority": "^0.7.0",

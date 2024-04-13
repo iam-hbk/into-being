@@ -81,7 +81,7 @@ export default function SubmitCVForm() {
     }
     try {
       const response = await fetch(`/api/submit-cv`, {
-        method: "POST",
+        method: "PUT",
         body: formData,
       });
 
@@ -92,20 +92,13 @@ export default function SubmitCVForm() {
         toast.success("CV Uploaded successfully");
         // form.reset();
       } else {
-        toast.error("Failed to upload cv" + response.statusText);
+        toast.error(
+          `Failed to upload cv ${response.status} - ${response.statusText}`,
+        );
       }
     } catch (error) {
       toast.error("Failed to upload cv");
     }
-
-    toast.success("Form submitted successfully", {
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-      duration: 3000,
-    });
 
     // Handle form submission
   };

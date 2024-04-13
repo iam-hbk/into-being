@@ -1,10 +1,7 @@
 "use server";
-import { EmailTemplate } from "@/components/email-template";
-import { stat } from "fs";
-import React from "react";
-import { Resend } from "resend";
-const resend = new Resend(process.env.RESEND_API_KEY);
-import { z } from "zod";
+
+import { db } from "@/db/drizzle";
+import { InsertJobSeeker, jobSeekers } from "@/db/schema";
 
 // export async function sendEmail(prevState: any, formData: FormData) {
 //   const schema = z.object({
@@ -52,3 +49,22 @@ import { z } from "zod";
 //     return { message: "Error sending email", status: 500 };
 //   }
 // }
+
+export async function addJobSeekerSeed() {
+    console.log("Adding job seeker seed...");
+  const res = await db
+    .insert(jobSeekers)
+    .values({
+      currentSalaryRange: "50000",
+      currentSalaryRate: "Annual",
+      cvUploadPath: "/uploads/cv/johndoe.pdf",
+      email: "delivered@resend.dev",
+      ethnicity: "Caucasian",
+      firstName: "John",
+      idNumber: "1234567890",
+      lastName: "Doe",
+      mobileNumber: "555-0100",
+      nationality: "USA",
+    })
+    .returning();
+}

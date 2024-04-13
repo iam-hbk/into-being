@@ -1,7 +1,7 @@
-import { sqliteTable, AnySQLiteColumn, integer, text, foreignKey } from "drizzle-orm/sqlite-core"
+import { sqliteTable, AnySQLiteColumn, integer, text } from "drizzle-orm/sqlite-core"
   import { sql } from "drizzle-orm"
 
-export const userInfo = sqliteTable("user_info", {
+export const jobSeekers = sqliteTable("job_seekers", {
 	id: integer("id").primaryKey().notNull(),
 	idNumber: text("idNumber").notNull(),
 	firstName: text("firstName").notNull(),
@@ -15,11 +15,17 @@ export const userInfo = sqliteTable("user_info", {
 	nationality: text("nationality").notNull(),
 });
 
-export const posts = sqliteTable("posts", {
-	id: integer("id").primaryKey().notNull(),
-	userId: integer("user_id").notNull().references(() => userInfo.id, { onDelete: "cascade" } ),
-	title: text("title").notNull(),
-	content: text("content").notNull(),
-	createdAt: text("created_at").default("sql`(CURRENT_TIMESTAMP)`").notNull(),
-	updatedAt: text("updated_at").notNull(),
+export const vacancies = sqliteTable("vacancies", {
+	vacancyId: integer("vacancyId").primaryKey({ autoIncrement: true }).notNull(),
+	postedBy: text("postedBy").notNull(),
+	companyName: text("companyName").notNull(),
+	postedByEmail: text("postedByEmail").notNull(),
+	postedByMobile: text("postedByMobile").notNull(),
+	postedBySource: text("postedBySource").notNull(),
+	niche: text("niche").notNull(),
+	jobTitle: text("jobTitle").notNull(),
+	description: text("description").notNull(),
+	region: text("region").notNull(),
+	workingModel: text("workingModel").notNull(),
+	vacancyFile: text("vacancyFile").notNull(),
 });

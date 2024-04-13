@@ -1,10 +1,8 @@
-import { EmailTemplate } from "@/components/email-template";
+import { ContactUsEmailTemplate } from "@/components/email-template";
 import { NextResponse } from "next/server";
 import React from "react";
-import { Resend } from "resend";
-import { string } from "zod";
+import { resend } from "@/components/email-template";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: Request) {
   try {
@@ -21,7 +19,7 @@ export async function POST(request: Request) {
       // to: ["terry@intobeingplacements.co.za"],
       to: ["nexusthestaff@gmail.com"],
       subject: "Into-Being Website Contact Form Submission",
-      react: EmailTemplate({
+      react: ContactUsEmailTemplate({
         firstName: name,
         email: email,
         message: message,
