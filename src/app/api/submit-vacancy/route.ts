@@ -1,7 +1,6 @@
 import { put } from "@vercel/blob";
 import { NextResponse } from "next/server";
 
-export const runtime = 'edge';
 
 export async function GET(request: Request) {
   return new Response("Not implemented", { status: 501 });
