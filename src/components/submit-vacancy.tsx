@@ -39,7 +39,7 @@ const formSchema = z
     jobTitle: z.string(),
     otherRegion: z.string().optional(),
     vacancyDetails: z.string().min(1, "Details about the vacancy are required"),
-    vacancyFile: z.instanceof(File),
+    vacancyFile: z.instanceof(Blob),
   })
   .superRefine((data, ctx) => {
     if (data.heardAboutUs === "other" && !data.otherHeardAboutUs) {
