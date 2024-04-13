@@ -7,7 +7,6 @@ import { Great_Vibes } from "next/font/google";
 import { Button } from "@/components/ui/button";
 import Services from "@/components/services";
 import AboutUs from "@/components/about";
-import ServerRendered from "@/components/server-rendered";
 export const dynamic = "force-dynamic";
 
 const fontGreatVibes = Great_Vibes({
