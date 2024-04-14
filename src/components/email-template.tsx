@@ -42,11 +42,11 @@ export const JobSeekerEmailTemplate: React.FC<
 > = (props) => (
   <div
     style={{
-      display: "flex",
-      flexDirection: "column",
-      width: "100%",
-      alignItems: "center",
-      gap: "3",
+      // display: "flex",
+      // flexDirection: "column",
+      // width: "100%",
+      // alignItems: "center",
+      // gap: "3",
     }}
   >
     <h1 style={{ fontSize: 18 }}>A Job Seeker has submitted their CV</h1>
@@ -115,11 +115,11 @@ export const VacancyEmailTemplate: React.FC<
 > = (props) => (
   <div
     style={{
-      display: "flex",
-      flexDirection: "column",
-      width: "100%",
-      alignItems: "center",
-      gap: "3",
+      // display: "flex",
+      // flexDirection: "column",
+      // width: "100%",
+      // alignItems: "center",
+      // gap: "3",
     }}
   >
     <h1 style={{ fontSize: 18 }}>A Job Poster has submitted a Vacancy</h1>
