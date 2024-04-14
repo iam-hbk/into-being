@@ -31,12 +31,13 @@ export function Footer() {
               Address <MapPin />
             </h3>
             <Link
-              href="https://maps.google.com/?q=375+Vine+Avenue,+Ferndale,+Randburg,+2194"
+            
+              href="https://maps.app.goo.gl/pYkdtLzBxB51WcFQ9"
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm hover:text-primary hover:underline"
             >
-              375 Vine Avenue, Ferndale, Randburg, 2194
+              Cnr Rabie and, Aimee St, Fontainebleau, Randburg, 2194
             </Link>
           </div>
           <div className="space-y-2">

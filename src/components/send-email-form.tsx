@@ -45,7 +45,7 @@ function ContactUsForm() {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
-      const response = await fetch("/api/send", {
+      const response = await fetch("/api/send-contact-us-newsletter-email", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
