@@ -23,6 +23,7 @@ import {
   FormMessage,
 } from "./ui/form";
 import { PutBlobResult } from "@vercel/blob";
+import { useState } from "react";
 
 const formSchema = z.object({
   nationality: z.string().min(1, "Nationality is required"),
@@ -43,19 +44,20 @@ const formSchema = z.object({
 });
 
 export default function SubmitCVForm() {
+  const [salaryRate, setSalaryRate] = useState<SALARY_RATES | null>(null);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      nationality: "south african",
-      idNumber: "1234567890",
-      firstName: "heritier",
-      lastName: "kaumbu",
-      mobileNumber: "0741221223",
-      email: "delivered@resend.dev",
-      ethnicity: "african",
-      currentSalaryRate: "hourly",
-      currentSalary: "8000-12000",
-    },
+    // defaultValues: {
+    //   nationality: "south african",
+    //   idNumber: "1234567890",
+    //   firstName: "heritier",
+    //   lastName: "kaumbu",
+    //   mobileNumber: "0741221223",
+    //   email: "delivered@resend.dev",
+    //   ethnicity: "african",
+    //   currentSalaryRate: "hourly",
+    //   currentSalary: "8000-12000",
+    // },
   });
   const {
     handleSubmit,
@@ -229,7 +231,10 @@ export default function SubmitCVForm() {
               <FormItem>
                 <FormLabel>Current Salary Rate *</FormLabel>
                 <Select
-                  onValueChange={field.onChange}
+                  onValueChange={(val) => {
+                    field.onChange(val);
+                    setSalaryRate(val as SALARY_RATES);
+                  }}
                   defaultValue={field.value}
                 >
                   <FormControl>
@@ -256,7 +261,7 @@ export default function SubmitCVForm() {
                 <Select
                   onValueChange={field.onChange}
                   defaultValue={field.value}
-                  disabled={!form.getValues("currentSalaryRate")}
+                  disabled={!salaryRate}
                 >
                   <FormControl>
                     <SelectTrigger id="currentSalary">
@@ -264,13 +269,13 @@ export default function SubmitCVForm() {
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent position="popper">
-                    {salaryOptions_[
-                      form.getValues("currentSalaryRate") as SALARY_RATES
-                    ].map((option) => (
-                      <SelectItem key={option.value} value={option.value}>
-                        {option.display}
-                      </SelectItem>
-                    ))}
+                    {salaryOptions_[salaryRate ? salaryRate : "hourly"]?.map(
+                      (option) => (
+                        <SelectItem key={option.value} value={option.value}>
+                          {option.display}
+                        </SelectItem>
+                      ),
+                    )}
                   </SelectContent>
                 </Select>
                 <FormMessage />

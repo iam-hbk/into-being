@@ -64,20 +64,20 @@ export type SubmitVacancyFormData = z.infer<typeof formSchema>;
 export default function SubmitVacancy() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      nameAndSurname: "heritier kaumbu",
-      companyName: "Resend",
-      jobTitle: "Finance Manager",
-      contactNumber: "0741221223",
-      email: "delivered@resend.dev",
-      heardAboutUs: "other",
-      otherHeardAboutUs: "x",
-      niche: "finance",
-      region: "other",
-      otherRegion: "Zambia",
-      workModel: "remote",
-      vacancyDetails: "This is a vacancy for a finance manager",
-    },
+    // defaultValues: {
+    //   nameAndSurname: "heritier kaumbu",
+    //   companyName: "Resend",
+    //   jobTitle: "Finance Manager",
+    //   contactNumber: "0741221223",
+    //   email: "delivered@resend.dev",
+    //   heardAboutUs: "other",
+    //   otherHeardAboutUs: "x",
+    //   niche: "finance",
+    //   region: "other",
+    //   otherRegion: "Zambia",
+    //   workModel: "remote",
+    //   vacancyDetails: "This is a vacancy for a finance manager",
+    // },
   });
   const { handleSubmit, control } = form;
 
