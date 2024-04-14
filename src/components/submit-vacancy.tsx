@@ -112,14 +112,14 @@ export default function SubmitVacancy() {
         method: "PUT",
         body: formData,
       });
-
+      const json = await response.json();
       if (response.ok) {
-        const res = (await response.json()) as PutBlobResult;
+        const res = json as PutBlobResult;
         console.log("Vacancy uploaded successfully");
         console.log(JSON.stringify(res, null, 2));
         toast.success("Vacancy Uploaded successfully");
       } else {
-        toast.error("Failed to upload vacancy" + response.statusText);
+        toast.error(json.error || "Failed to upload vacancy");
       }
     } catch (error) {
       toast.error("Failed to upload vacancy");

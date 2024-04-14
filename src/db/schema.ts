@@ -45,6 +45,7 @@ export const addJobSeeker = async (jobSeeker: InsertJobSeeker) => {
     if (res.length < 1) throw new Error("Something weird happened");
     return res[0];
   } catch (error) {
+    console.error(error)
     throw error;
   }
 };
@@ -52,6 +53,12 @@ export const addJobSeeker = async (jobSeeker: InsertJobSeeker) => {
 /*--------------- Vacancies Actions --------------- */
 
 export const addVacancy = async (vacancy: InsertVacancy) => {
-  const res = await db.insert(vacancies).values(vacancy).returning();
-  return res;
+  try {
+    const res = await db.insert(vacancies).values(vacancy).returning();
+    if (res.length < 1) throw new Error("Something weird happened");
+    return res[0];
+  } catch (error) {
+    console.error(error)
+    return null;
+  }
 };
