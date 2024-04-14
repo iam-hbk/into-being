@@ -42,11 +42,11 @@ export const JobSeekerEmailTemplate: React.FC<
 > = (props) => (
   <div
     style={{
-      display: "flex",
-      flexDirection: "column",
-      width: "100%",
-      alignItems: "center",
-      gap: "3",
+      // display: "flex",
+      // flexDirection: "column",
+      // width: "100%",
+      // alignItems: "center",
+      // gap: "3",
     }}
   >
     <h1 style={{ fontSize: 18 }}>A Job Seeker has submitted their CV</h1>
@@ -115,11 +115,11 @@ export const VacancyEmailTemplate: React.FC<
 > = (props) => (
   <div
     style={{
-      display: "flex",
-      flexDirection: "column",
-      width: "100%",
-      alignItems: "center",
-      gap: "3",
+      // display: "flex",
+      // flexDirection: "column",
+      // width: "100%",
+      // alignItems: "center",
+      // gap: "3",
     }}
   >
     <h1 style={{ fontSize: 18 }}>A Job Poster has submitted a Vacancy</h1>
@@ -192,22 +192,22 @@ const VacancyConfirmationEmailContent: React.FC<{ firstName: string }> = ({
     firstName.charAt(0).toUpperCase() + firstName.slice(1).toLocaleLowerCase();
   const styles = {
     container: {
-      fontFamily: "Arial, sans-serif",
-      color: "#333",
-      padding: "20px",
-      lineHeight: "1.5",
+      // fontFamily: "Arial, sans-serif",
+      // color: "#333",
+      // padding: "20px",
+      // lineHeight: "1.5",
     },
     header: {
-      fontSize: "18px",
-      color: "#444",
+      // fontSize: "18px",
+      // color: "#444",
     },
     body: {
-      marginTop: "20px",
+      // marginTop: "20px",
     },
     footer: {
-      marginTop: "20px",
-      fontSize: "14px",
-      color: "#666",
+      // marginTop: "20px",
+      // fontSize: "14px",
+      // color: "#666",
     },
   };
 
