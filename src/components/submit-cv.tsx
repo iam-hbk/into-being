@@ -165,7 +165,7 @@ export default function SubmitCVForm() {
             name="lastName"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Preferred First Name *</FormLabel>
+                <FormLabel>Last Name *</FormLabel>
                 <Input {...field} id="lastName" placeholder="Last Name" />
                 <FormMessage />
               </FormItem>
@@ -319,7 +319,7 @@ export default function SubmitCVForm() {
               disabled={form.formState.isSubmitting}
               className="w-full max-w-xs"
             >
-              {!form.formState.isSubmitting ? "Submit" : "Loading..."}
+              {!form.formState.isSubmitting ? "Submit" : "Submitting..."}
             </Button>
           </div>
         </form>

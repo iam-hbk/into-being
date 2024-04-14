@@ -80,8 +80,8 @@ export const sendInsertedJobSeekerConfirmationEmail = async (
   try {
     const sendToTerry = await resend.emails.send({
       from: "Intobeing <info@intobeingplacements.co.za>",
-      // to: ["terry@intobeingplacements.co.za"],
-      to: ["nexusthestaff@gmail.com"],
+      to: ["terry@intobeingplacements.co.za","nexusthestaff@gmail.com"],
+      // to: ["nexusthestaff@gmail.com"],
       subject: "New CV Uploaded on Intobeing Placements",
       react: JobSeekerEmailTemplate(props) as React.ReactElement,
     });
@@ -157,8 +157,8 @@ export const sendInsertedVacancyConfirmationEmail = async (
   try {
     const sendToTerry = await resend.emails.send({
       from: "Intobeing <info@intobeingplacements.co.za>",
-      // to: ["terry@intobeingplacements.co.za"],
-      to: ["nexusthestaff@gmail.com"],
+      to: ["terry@intobeingplacements.co.za","nexusthestaff@gmail.com"],
+      // to: ["nexusthestaff@gmail.com"],
       subject: "New Vacancy Uploaded on Intobeing Placements",
       react: VacancyEmailTemplate(props) as React.ReactElement,
     });

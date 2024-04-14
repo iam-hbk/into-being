@@ -24,6 +24,7 @@ import {
 } from "./ui/form";
 import { PutBlobResult } from "@vercel/blob";
 import { Textarea } from "./ui/textarea";
+import { useState } from "react";
 
 const formSchema = z
   .object({
@@ -62,6 +63,10 @@ const formSchema = z
   });
 export type SubmitVacancyFormData = z.infer<typeof formSchema>;
 export default function SubmitVacancy() {
+  const [others, setOthers] = useState({
+    heardAboutUs: false,
+    region: false,
+  });
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     // defaultValues: {
@@ -186,7 +191,14 @@ export default function SubmitVacancy() {
               <FormItem>
                 <FormLabel>How did you hear about us? *</FormLabel>
                 <Select
-                  onValueChange={field.onChange}
+                  onValueChange={(val) => {
+                    field.onChange(val);
+                    if (val === "other") {
+                      setOthers({ ...others, heardAboutUs: true });
+                    } else {
+                      setOthers({ ...others, heardAboutUs: false });
+                    }
+                  }}
                   defaultValue={field.value}
                 >
                   <FormControl>
@@ -216,10 +228,7 @@ export default function SubmitVacancy() {
               <FormItem
                 className="transition-all duration-300"
                 style={{
-                  display:
-                    form.getValues("heardAboutUs") === "other"
-                      ? "block"
-                      : "none",
+                  display: others.heardAboutUs ? "block" : "none",
                 }}
               >
                 <FormLabel>Please specify how you heard about us</FormLabel>
@@ -292,7 +301,14 @@ export default function SubmitVacancy() {
               <FormItem>
                 <FormLabel>Region *</FormLabel>
                 <Select
-                  onValueChange={field.onChange}
+                  onValueChange={(val) => {
+                    field.onChange(val);
+                    if (val === "other") {
+                      setOthers({ ...others, region: true });
+                    } else {
+                      setOthers({ ...others, region: false });
+                    }
+                  }}
                   defaultValue={field.value}
                 >
                   <FormControl>
@@ -316,8 +332,7 @@ export default function SubmitVacancy() {
               <FormItem
                 className="transition-all duration-300"
                 style={{
-                  display:
-                    form.getValues("region") === "other" ? "block" : "none",
+                  display: others.region ? "block" : "none",
                 }}
               >
                 <FormLabel>Please specify the region</FormLabel>
@@ -414,7 +429,7 @@ export default function SubmitVacancy() {
               disabled={form.formState.isSubmitting}
               className="w-full max-w-xs"
             >
-              {!form.formState.isSubmitting ? "Submit" : "Loading..."}
+              {!form.formState.isSubmitting ? "Submit" : "Submitting..."}
             </Button>
           </div>
         </form>
