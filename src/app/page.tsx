@@ -7,6 +7,7 @@ import { Great_Vibes } from "next/font/google";
 import { Button } from "@/components/ui/button";
 import Services from "@/components/services";
 import AboutUs from "@/components/about";
+export const dynamic = "force-dynamic";
 
 const fontGreatVibes = Great_Vibes({
   subsets: ["latin"],
@@ -56,14 +57,13 @@ function Page({}: Props) {
           alt="logo"
           height={500}
           width={500}
-          className="rounded-full w-450 h-auto"
+          className="w-450 h-auto rounded-full"
         />
       </div>
       {/* Services Section */}
       <Services />
       {/* About Us */}
       <AboutUs />
-      
     </section>
   );
 }

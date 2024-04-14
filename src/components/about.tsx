@@ -9,7 +9,7 @@ const AboutUs = (props: Props) => {
   return (
     <div className="flex min-h-screen w-full flex-col items-center bg-gradient-to-b from-transparent to-gray-400 p-10">
       <AnimatedGroup>
-        <div className="p-4 text-7xl font-bold" id="services">
+        <div className="p-4 text-7xl font-bold" id="about-us">
           About Us
         </div>
         <p className="mt-4 max-w-screen-sm text-center">

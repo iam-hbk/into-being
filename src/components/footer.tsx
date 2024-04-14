@@ -16,9 +16,12 @@ import {
   Users,
   Zap,
 } from "lucide-react";
-import { Textarea } from "./ui/textarea";
+import ContactUsForm from "./send-email-form";
+
+
 
 export function Footer() {
+
   return (
     <footer className=" flex w-full flex-col items-center bg-bigtitle py-6 text-bigtitle-foreground dark:bg-background">
       <div className="container flex flex-row justify-between gap-5">
@@ -28,12 +31,13 @@ export function Footer() {
               Address <MapPin />
             </h3>
             <Link
-              href="https://maps.google.com/?q=375+Vine+Avenue,+Ferndale,+Randburg,+2194"
+            
+              href="https://maps.app.goo.gl/pYkdtLzBxB51WcFQ9"
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm hover:text-primary hover:underline"
             >
-              375 Vine Avenue, Ferndale, Randburg, 2194
+              Cnr Rabie and, Aimee St, Fontainebleau, Randburg, 2194
             </Link>
           </div>
           <div className="space-y-2">
@@ -106,19 +110,7 @@ export function Footer() {
             Get In Touch
             <Unplug />
           </h3>
-          <form className="flex h-full flex-grow flex-col gap-2 md:col-span-4 md:col-start-2 lg:col-span-3 lg:col-start-3">
-            <div className="grid gap-4 md:grid-cols-2">
-              <Input className="w-full" placeholder="Name" />
-              <Input className="w-full" placeholder="Email" />
-            </div>
-            <Textarea
-              className="h-full"
-              placeholder="Type your message here."
-            />
-            <Button className="w-full" type="submit">
-              Submit
-            </Button>
-          </form>
+          <ContactUsForm />
         </div>
 
         <div className="flex flex-col gap-3">

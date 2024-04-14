@@ -1,11 +1,12 @@
+import SubmitVacancy from "@/components/submit-vacancy";
 import React from "react";
 
 type Props = {};
 
 const Page = (props: Props) => {
   return (
-    <section className="flex min-h-[50vh] flex-col items-center justify-center">
-      Submit Vacancy
+    <section className="pt-10 flex min-h-screen flex-col items-center justify-center bg-gradient-to-bl from-bigtitle dark:from-tertiary to-secondary">
+      <SubmitVacancy />
     </section>
   );
 };
