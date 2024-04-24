@@ -35,9 +35,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Navbar />
+          {/*<Navbar />*/}
           <main>{children}</main>
-          <Footer />
+          {/*<Footer />*/}
           <Toaster richColors />
         </ThemeProvider>
       </body>
