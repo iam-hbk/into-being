@@ -42,9 +42,11 @@ export function SheetSide() {
           <Link href={"/submit-cv"}>Submit CV</Link>
         </SheetClose>
         <SheetFooter>
-        //   <SheetClose asChild>
-        //     <Button type="submit">Save changes</Button>
-        //   </SheetClose>
+          {/*
+            <SheetClose asChild>
+              <Button type="submit">Save changes</Button>
+            </SheetClose>
+  */}
         </SheetFooter>
       </SheetContent>
     </Sheet>
