@@ -397,7 +397,7 @@ export default function SubmitVacancy() {
             name="vacancyFile"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Upload CV *</FormLabel>
+                <FormLabel>Upload a vacancy file *</FormLabel>
                 <input
                   required
                   className="block w-full text-sm 
@@ -437,49 +437,3 @@ export default function SubmitVacancy() {
     </div>
   );
 }
-const salaryOptions_ = {
-  monthly: [
-    { value: "<3000", display: "< R3000" },
-    { value: "8000-12000", display: "R8000 - R12000" },
-    { value: "13001-21000", display: "R13001 - R21000" },
-    { value: "22001-34000", display: "R22001 - R34000" },
-    { value: "35001-53000", display: "R35001 - R53000" },
-    { value: "54001-81000", display: "R54001 - R81000" },
-    { value: "250000+", display: "R250000+" },
-  ],
-  hourly: [
-    { value: "<18.75", display: "< R18.75" },
-    { value: "50-75", display: "R50.00 - R75.00" },
-    { value: "81.26-131.25", display: "R81.26 - R131.25" },
-    { value: "137.51-212.5", display: "R137.51 - R212.50" },
-    { value: "218.76-331.25", display: "R218.76 - R331.25" },
-    { value: "337.51-506.25", display: "R337.51 - R506.25" },
-    { value: "1562.5+", display: "R1562.50+" },
-  ],
-  annually: [
-    { value: "<36000", display: "<R36,000" },
-    { value: "96000-144000", display: "R96,000 - R144,000" },
-    { value: "156012-252000", display: "R156,012 - R252,000" },
-    { value: "264012-408000", display: "R264,012 - R408,000" },
-    { value: "420012-636000", display: "R420,012 - R636,000" },
-    { value: "648012-972000", display: "R648,012 - R972,000" },
-    { value: "3000000+", display: "R3,000,000+" },
-  ],
-};
-
-type SALARY_RATES = "hourly" | "monthly" | "annually";
-
-/* 
-~ Submitter Information
-- Name and Surname* - Input
-- Contact Number* - Input
-- Email Address* - Input
-- How did you hear about us? - Select
-~ Vacancy Information
-- Niche* - Select
-- Work Model* - Select
-- Region* - Select(South Africa - Other)
-- If other, please specify - Input
-- More about the vacancy* - Textarea
-- Upload Job Spec* - File
-*/
