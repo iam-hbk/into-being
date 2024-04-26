@@ -14,8 +14,19 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
+import { Menu } from "lucide-react";
 import { Great_Vibes } from "next/font/google";
 import Link from "next/link";
+import { ModeToggle } from "./theme-toggle";
+
+const links = [
+  { name: "Home", href: "/" },
+  { name: "Submit CV", href: "/submit-cv" },
+  { name: "Submit Vacancy", href: "/submit-vacancy" },
+  { name: "Available Positions", href: "/available-positions" },
+  { name: "Services", href: "/#services" },
+  { name: "About Us", href: "/#about-us" },
+];
 
 const fontGreatVibes = Great_Vibes({
   subsets: ["latin"],
@@ -26,9 +37,14 @@ export function SheetSide() {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button variant="outline">HB</Button>
+        <Button className="m-2 p-0" variant={"ghost"}>
+          <Menu />
+        </Button>
       </SheetTrigger>
-      <SheetContent side={"left"}>
+      <SheetContent
+        className="flex flex-col bg-gradient-to-tr from-gray-300 to-secondary dark:from-muted"
+        side={"left"}
+      >
         <SheetHeader>
           <SheetTitle>INTO BEING PLACEMENTS</SheetTitle>
           <SheetDescription
@@ -37,16 +53,22 @@ export function SheetSide() {
             Niche Specialisation
           </SheetDescription>
         </SheetHeader>
+        <nav className="flex-grow ">
+          <ul className="">
+            {links.map(({ name, href }) => (
+              <li key={name}>
+                <Link href={href}>
+                  <Button className="my-1 w-full" variant={"outline"}>
+                    {name}
+                  </Button>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
 
-        <SheetClose asChild>
-          <Link href={"/submit-cv"}>Submit CV</Link>
-        </SheetClose>
-        <SheetFooter>
-          {/*
-            <SheetClose asChild>
-              <Button type="submit">Save changes</Button>
-            </SheetClose>
-  */}
+        <SheetFooter className="align-bottom">
+          <ModeToggle />
         </SheetFooter>
       </SheetContent>
     </Sheet>
