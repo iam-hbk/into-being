@@ -33,7 +33,7 @@ const fontGreatVibes = Great_Vibes({
   weight: ["400"],
 });
 
-export function SheetSide() {
+export function MobileNav() {
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -57,11 +57,13 @@ export function SheetSide() {
           <ul className="">
             {links.map(({ name, href }) => (
               <li key={name}>
-                <Link href={href}>
-                  <Button className="my-1 w-full" variant={"outline"}>
-                    {name}
-                  </Button>
-                </Link>
+                <SheetClose className="w-full" asChild>
+                  <Link href={href}>
+                    <Button className="my-1 w-full" variant={"outline"}>
+                      {name}
+                    </Button>
+                  </Link>
+                </SheetClose>
               </li>
             ))}
           </ul>

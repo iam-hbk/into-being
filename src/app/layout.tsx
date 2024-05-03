@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Footer } from "@/components/footer";
 import { Toaster } from "@/components/ui/sonner";
+import { MobileNav } from "@/components/responsive-nav";
 
 export const fontSans = FontSans({
   subsets: ["latin"],
@@ -25,7 +26,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased",
+          "min-h-screen bg-background font-sans antialiased relative",
           fontSans.variable,
         )}
       >
@@ -35,7 +36,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {/*<Navbar />*/}
+          <Navbar />
+          <nav className="sticky top-0 z-50">
+            <MobileNav />
+          </nav>
           <main>{children}</main>
           {/*<Footer />*/}
           <Toaster richColors />
