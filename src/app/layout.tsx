@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Urbanist as FontSans } from "next/font/google";
+import { Great_Vibes,Urbanist as FontSans } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/nav-bar";
 import { cn } from "@/lib/utils";
@@ -11,6 +11,11 @@ import { MobileNav } from "@/components/responsive-nav";
 const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
+});
+const fontGreatVibes = Great_Vibes({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-great-vibes",
 });
 export const metadata: Metadata = {
   title: "Into Being",
@@ -26,8 +31,8 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased relative",
-          fontSans.variable,
+          "relative min-h-screen bg-background font-sans antialiased",
+          fontSans.variable,fontGreatVibes.variable
         )}
       >
         <ThemeProvider
@@ -37,7 +42,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Navbar />
-          <nav className="sticky top-0 z-50">
+          <nav className="sticky top-0 z-50 sm:hidden h-0">
             <MobileNav />
           </nav>
           <main>{children}</main>

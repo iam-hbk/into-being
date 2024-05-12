@@ -42,7 +42,7 @@ export function Navbar() {
         className="fixed z-50 hidden w-full  bg-white/30 p-3 shadow-sm   backdrop-blur-md transition-all duration-500 sm:flex"
       >
         {/* Wrapper */}
-        <div className="flex flex-row justify-between rounded-lg bg-none p-2 ">
+        <div className="flex flex-row justify-between gap-1 w-full rounded-lg bg-none p-2 ">
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
@@ -110,7 +110,6 @@ export function Navbar() {
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
-
           <ModeToggle />
         </div>
       </nav>
