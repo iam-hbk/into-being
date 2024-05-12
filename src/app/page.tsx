@@ -26,11 +26,15 @@ function Page({}: Props) {
     <section
       className={"flex min-h-screen flex-col items-center justify-center"}
     >
-      <div className="flex h-screen w-full flex-col items-center justify-around bg-gradient-to-tr from-gray-300 to-secondary p-20 dark:from-muted md:flex-row">
-        <div className="flex h-full flex-col items-center justify-center gap-5 ">
-          <h1 className="text-5xl">Recruitment Agency</h1>
-          <h1 className="font-script text-5xl">Niche Specialisation</h1>
-          <p className="max-w-[50%]">
+      <div className="flex h-screen w-full flex-col-reverse items-center justify-center bg-gradient-to-tr from-gray-300 to-secondary p-5 dark:from-muted md:flex-row md:justify-around md:p-20">
+        <div className="flex h-auto flex-col items-center justify-center gap-5 ">
+          <h1 className=" text-4xl tracking-tight lg:text-5xl">
+            Recruitment Agency
+          </h1>
+          <h1 className="font-script scroll-m-20 text-4xl tracking-tight lg:text-5xl">
+            Niche Specialisation
+          </h1>
+          <p className="max-h-[20%] text-center md:max-w-[50%] md:text-left">
             Welcome to Into Being Placements we are a specialised headhunting
             and talent acquisition agency. Providing you with recruitment and
             human capital solutions for your business. Let our talent find you
@@ -47,7 +51,7 @@ function Page({}: Props) {
           priority // keep only if this image is critical for initial loading
           src={Logo} // ensure Logo is imported and optimized
           alt="logo"
-          className="h-auto w-1/6 max-w-[400px] rounded-full sm:w-1/3 md:w-1/2 lg:w-full" // added default width for xs screens
+          className="h-auto w-1/6 min-w-[130px] max-w-[400px] rounded-full sm:w-1/3 md:w-1/2 lg:w-full" // added default width for xs screens
         />
 
         {/* <Image

@@ -53,7 +53,7 @@ export function MobileNav() {
             Niche Specialisation
           </SheetDescription>
         </SheetHeader>
-        <nav className="flex-grow ">
+        <nav className="md:flex-grow ">
           <ul className="">
             {links.map(({ name, href }) => (
               <li key={name}>
