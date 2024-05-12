@@ -42,7 +42,7 @@ export function Navbar() {
         className="fixed z-50 hidden w-full  bg-white/30 p-3 shadow-sm   backdrop-blur-md transition-all duration-500 sm:flex"
       >
         {/* Wrapper */}
-        <div className="flex flex-row justify-between gap-1 w-full rounded-lg bg-none p-2 ">
+        <div className="flex w-full flex-row justify-between gap-1 rounded-lg bg-none p-2 ">
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
@@ -52,7 +52,7 @@ export function Navbar() {
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
-              <NavigationMenuItem>
+              <NavigationMenuItem className="flex md:hidden">
                 <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px]">
@@ -73,21 +73,21 @@ export function Navbar() {
                   </ul>
                 </NavigationMenuContent>
               </NavigationMenuItem>
-              <NavigationMenuItem>
+              <NavigationMenuItem className="hidden md:flex">
                 <Link href="/submit-cv" legacyBehavior passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                     Submit CV
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
-              <NavigationMenuItem>
+              <NavigationMenuItem className="hidden md:flex">
                 <Link href="/submit-vacancy" legacyBehavior passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                     Submit Vacancy
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
-              <NavigationMenuItem>
+              <NavigationMenuItem className="hidden md:flex">
                 <Link href="/available-positions" legacyBehavior passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                     Available Positions

@@ -26,7 +26,7 @@ function Page({}: Props) {
     <section
       className={"flex min-h-screen flex-col items-center justify-center"}
     >
-      <div className="flex h-screen w-full flex-row items-center justify-around bg-gradient-to-tr from-gray-300 to-secondary p-20 dark:from-muted">
+      <div className="flex h-screen w-full flex-col items-center justify-around bg-gradient-to-tr from-gray-300 to-secondary p-20 dark:from-muted md:flex-row">
         <div className="flex h-full flex-col items-center justify-center gap-5 ">
           <h1 className="text-5xl">Recruitment Agency</h1>
           <h1 className="font-script text-5xl">Niche Specialisation</h1>
@@ -44,13 +44,20 @@ function Page({}: Props) {
         </div>
 
         <Image
+          priority // keep only if this image is critical for initial loading
+          src={Logo} // ensure Logo is imported and optimized
+          alt="logo"
+          className="h-auto w-1/6 max-w-[400px] rounded-full sm:w-1/3 md:w-1/2 lg:w-full" // added default width for xs screens
+        />
+
+        {/* <Image
           priority
           src={Logo}
           alt="logo"
           height={500}
           width={500}
-          className="w-450 h-auto rounded-full"
-        />
+          className="lg:w-full h-auto rounded-full sm:w-1/5 md:w-1/3"
+        /> */}
       </div>
       {/* Services Section */}
       <Services />
