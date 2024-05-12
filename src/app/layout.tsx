@@ -46,7 +46,7 @@ export default function RootLayout({
             <MobileNav />
           </nav>
           <main>{children}</main>
-          {/*<Footer />*/}
+          <Footer />
           <Toaster richColors />
         </ThemeProvider>
       </body>
