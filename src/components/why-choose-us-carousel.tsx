@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import { cn } from "@/lib/utils";
+import { SearchCheck, Timer, Lightbulb, HeartHandshake } from "lucide-react";
 
 const SLIDES = [
   {
@@ -15,27 +16,43 @@ const SLIDES = [
       light: "text-primary",
       dark: "dark:text-primary",
     },
-    icon: <SearchCheckIcon />,
+    icon: (
+      <>
+        <SearchCheckIcon />
+        <SearchCheck size={"140px"} className="sm:hidden" />
+      </>
+    ),
+
     title: "Targeted Candidate Sourcing",
     description:
       "Our approach focuses on proactively sourcing and referring candidates of the highest caliber, ensuring a direct match with your specific requirements for optimal outcomes.",
   },
   {
     colors: {
-      light: "text-blue-500",
-      dark: "dark:text-blue-400",
+      light: "text-violet-500",
+      dark: "dark:text-purple-400",
     },
-    icon: <StopWatchIcon />,
+    icon: (
+      <>
+        <StopWatchIcon />
+        <Timer size={"140px"} className="sm:hidden" />
+      </>
+    ),
     title: "Rapid Turnaround",
     description:
       "We guarantee a strict 24-72 hour turnaround time for delivering high-quality CVs or providing feedback, ensuring swift progress in your recruitment efforts.",
   },
   {
     colors: {
-      light: "text-indigo-500",
-      dark: "dark:text-indigo-400",
+      light: "text-green-600",
+      dark: "dark:text-green-500",
     },
-    icon: <LightbulbIcon />,
+    icon: (
+      <>
+        <LightbulbIcon />
+        <Lightbulb size={"140px"} className="sm:hidden" />
+      </>
+    ),
     title: "Expertise-Driven Consulting",
     description:
       "Our consultants bring deep knowledge in their areas of specialization, offering added value through their expertise to guide you effectively through the hiring process.",
@@ -45,7 +62,12 @@ const SLIDES = [
       light: "text-red-500",
       dark: "dark:text-red-400",
     },
-    icon: <HeartHandshakeIcon />,
+    icon: (
+      <>
+        <HeartHandshakeIcon />
+        <HeartHandshake size={"140px"} className="sm:hidden" />
+      </>
+    ),
     title: "Ongoing Support",
     description:
       "We provide continuous support to our clients throughout the entire recruitment process and beyond, ensuring a smooth and effective partnership.",
@@ -68,17 +90,19 @@ export function WhyChooseUsCarousel() {
               <span className={cn(slide.colors.light, slide.colors.dark)}>
                 {slide.icon}
               </span>
-              <div className="m-4 flex w-[50%] flex-col items-center justify-center gap-2">
+              <div className="m-4 flex  flex-col items-center justify-center gap-2">
                 <h3
                   className={cn(
-                    "text-5xl font-bold ",
+                    "scroll-m-20 text-center text-2xl font-semibold tracking-tight sm:text-5xl",
                     slide.colors.light,
                     slide.colors.dark,
                   )}
                 >
                   {slide.title}
                 </h3>
-                <p className="w-[80%] text-center">{slide.description}</p>
+                <p className="hidden w-[80%] text-center sm:block">
+                  {slide.description}
+                </p>
               </div>
             </div>
           </CarouselItem>
@@ -119,7 +143,7 @@ function SearchCheckIcon() {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="lucide lucide-search-check"
+      className="lucide lucide-search-check hidden sm:block"
       initial="hidden"
       animate="visible"
     >
@@ -145,7 +169,7 @@ function StopWatchIcon() {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="lucide lucide-timer"
+      className="lucide lucide-timer hidden sm:block"
       initial="hidden" // Set initial animation state
       animate="visible" // Set the state to animate to
     >
@@ -186,7 +210,7 @@ function LightbulbIcon() {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="lucide lucide-lightbulb"
+      className="lucide lucide-lightbulb hidden sm:block"
       initial="hidden"
       animate="visible"
     >
@@ -216,7 +240,7 @@ function HeartHandshakeIcon() {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="lucide lucide-heart-handshake"
+      className="lucide lucide-heart-handshake hidden sm:block"
       initial="hidden"
       animate="visible"
     >

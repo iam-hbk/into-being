@@ -18,20 +18,16 @@ import {
 } from "lucide-react";
 import ContactUsForm from "./send-email-form";
 
-
-
 export function Footer() {
-
   return (
     <footer className=" flex w-full flex-col items-center bg-bigtitle py-6 text-bigtitle-foreground dark:bg-background">
-      <div className="container flex flex-row justify-between gap-5">
+      <div className="container flex flex-col justify-between gap-5 md:flex-row">
         <div className="space-y-4">
           <div className="space-y-2">
             <h3 className="flex flex-row items-center gap-2 text-xl font-semibold">
               Address <MapPin />
             </h3>
             <Link
-            
               href="https://maps.app.goo.gl/pYkdtLzBxB51WcFQ9"
               target="_blank"
               rel="noopener noreferrer"
@@ -67,27 +63,38 @@ export function Footer() {
             <h3 className="flex flex-row items-center gap-2 text-xl font-semibold">
               Legal <Scale />
             </h3>
-            <Link className="hover:text-primary hover:underline" href="#">
-              Privacy Policy
-            </Link>
-            <Link className="hover:text-primary hover:underline" href="#">
-              Terms & Conditions
-            </Link>
+            <div className="flex flex-row justify-evenly gap-2 text-sm md:flex-col ">
+              <Link className="hover:text-primary hover:underline" href="#">
+                Privacy Policy
+              </Link>
+              <Link className="hover:text-primary hover:underline" href="#">
+                Terms & Conditions
+              </Link>
+            </div>
           </div>
         </div>
 
-        <div className="max-w-[20%]">
+        <div className="md:max-w-[20%]">
           <h3 className="flex flex-row items-center gap-2 text-xl font-semibold">
             Quick Links <Zap />
           </h3>
-          <div className="mt-3 flex flex-col gap-2 text-sm">
-            <Link className="hover:text-primary hover:underline" href="#">
+          <div className="mt-3 flex flex-row justify-between gap-2 text-sm md:flex-col">
+            <Link
+              className="underline hover:text-primary hover:underline sm:no-underline "
+              href="#"
+            >
               Available Positions
             </Link>
-            <Link className="hover:text-primary hover:underline" href="#">
+            <Link
+              className="underline hover:text-primary hover:underline sm:no-underline "
+              href="#"
+            >
               Upload CV
             </Link>
-            <Link className="hover:text-primary hover:underline" href="#">
+            <Link
+              className="underline hover:text-primary hover:underline sm:no-underline "
+              href="#"
+            >
               Upload Vacancy
             </Link>
           </div>

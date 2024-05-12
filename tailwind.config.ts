@@ -91,11 +91,11 @@ const config = {
       },
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
+        script: ["var(--font-great-vibes)", ...fontFamily.serif],
       },
     },
   },
   plugins: [require("tailwindcss-animate")],
 } satisfies Config;
-
 
 export default config;
