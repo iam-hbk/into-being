@@ -9,10 +9,13 @@ const AboutUs = (props: Props) => {
   return (
     <div className="flex min-h-screen w-full flex-col items-center bg-gradient-to-b from-transparent to-gray-400 p-10">
       <AnimatedGroup>
-        <div className="p-4 text-7xl font-bold" id="about-us">
+        <div
+          className="p-4 text-4xl font-bold text-bigtitle sm:text-7xl"
+          id="about-us"
+        >
           About Us
         </div>
-        <p className="max-w-screen-sm text-wrap py-10 text-center leading-7 sm:py-2 [&:not(:first-child)]:mt-4">
+        <p className="max-w-screen-sm text-wrap text-center leading-7 sm:py-2 [&:not(:first-child)]:mt-4">
           <b className="font-bold text-primary">IntoBeing Placements</b> is a
           specialized recruitment agency focusing on{" "}
           <b className="font-bold text-primary"> Finance, IT, and Legal</b>{" "}
@@ -30,7 +33,7 @@ const AboutUs = (props: Props) => {
       {/* <WorkedWith /> */}
       {/* Why Choose Us */}
       <AnimatedGroup className="w-full">
-        <div className="mt-14 p-4 text-7xl font-bold capitalize">
+        <div className="mt-4 p-4 text-4xl font-bold text-bigtitle sm:text-7xl">
           Why choose us ?
         </div>
         <WhyChooseUsCarousel />

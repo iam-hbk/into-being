@@ -18,7 +18,7 @@ const AnimatedGroup = ({ children, className }: Props) => {
     <motion.div
       initial={{ y: 200, opacity: 0 }}
       whileInView={{ y: 0, transition: { duration: 1 }, opacity: 1 }}
-      className={cn(className)}
+      className={cn("flex flex-col items-center", className)}
     >
       {children}
     </motion.div>
