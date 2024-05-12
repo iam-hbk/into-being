@@ -12,7 +12,7 @@ const AboutUs = (props: Props) => {
         <div className="p-4 text-7xl font-bold" id="about-us">
           About Us
         </div>
-        <p className="mt-4 max-w-screen-sm text-center">
+        <p className="max-w-screen-sm text-wrap py-10 text-center leading-7 sm:py-2 [&:not(:first-child)]:mt-4">
           <b className="font-bold text-primary">IntoBeing Placements</b> is a
           specialized recruitment agency focusing on{" "}
           <b className="font-bold text-primary"> Finance, IT, and Legal</b>{" "}

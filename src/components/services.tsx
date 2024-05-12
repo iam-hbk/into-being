@@ -44,12 +44,15 @@ const SERVICES = [
 
 const Services = (props: Props) => {
   return (
-    <AnimatedGroup>
-      <div className="animate__animated animate__fadeInUp flex min-h-screen flex-col items-center p-10">
-        <div className="p-4 text-7xl font-bold text-bigtitle" id="services">
+    <AnimatedGroup className="w-full">
+      <div className="animate__animated animate__fadeInUp flex min-h-screen flex-col items-center sm:p-10">
+        <div
+          className="p-4 text-4xl font-bold text-bigtitle sm:text-7xl"
+          id="services"
+        >
           Our Services
         </div>
-        <p className="max-w-screen-sm text-center">
+        <p className="max-w-screen-sm text-wrap px-5 text-center leading-7 sm:py-2 [&:not(:first-child)]:mt-4">
           Our recruiting expects are available to you across all sectors and
           industries; We assess skills and achievement and fulfill comprehensive
           career planning which is made available to clients Engineering,
@@ -58,7 +61,7 @@ const Services = (props: Props) => {
           screening saving you time and money ensure a long-term partnership
           built on trust.
         </p>
-        <div className=" mt-10 flex flex-wrap justify-center rounded-md bg-secondary p-3 py-10">
+        <div className=" mt-10 flex flex-wrap justify-center rounded-md bg-secondary">
           {SERVICES.map((service) => (
             <div
               key={service.title}

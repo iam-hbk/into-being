@@ -26,7 +26,7 @@ function Page({}: Props) {
     <section
       className={"flex min-h-screen flex-col items-center justify-center"}
     >
-      <div className="flex h-screen w-full flex-col-reverse items-center justify-center bg-gradient-to-tr from-gray-300 to-secondary p-5 dark:from-muted md:flex-row md:justify-around md:p-20">
+      <div className="flex h-screen flex-col-reverse items-center justify-center bg-gradient-to-tr from-gray-300 to-secondary p-5 dark:from-muted md:flex-row md:justify-around md:p-20">
         <div className="flex h-auto flex-col items-center justify-center gap-10">
           <h1 className=" text-4xl tracking-tight lg:text-5xl">
             Recruitment Agency
