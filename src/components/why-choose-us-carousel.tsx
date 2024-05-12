@@ -44,8 +44,8 @@ const SLIDES = [
   },
   {
     colors: {
-      light: "text-green-500",
-      dark: "dark:text-green-400",
+      light: "text-green-600",
+      dark: "dark:text-green-500",
     },
     icon: (
       <>
