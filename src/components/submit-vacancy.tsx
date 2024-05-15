@@ -134,7 +134,7 @@ export default function SubmitVacancy() {
   };
 
   return (
-    <div className="mx-auto w-[60svw] max-w-7xl rounded-lg bg-background p-6 shadow-lg">
+    <div className="mx-auto sm:w-[60svw] my-5 max-w-7xl rounded-lg bg-background p-6 shadow-lg">
       <Form {...form}>
         <h1 className="m-4 mb-6 text-3xl font-bold lg:text-5xl">
           Submit a Vacancy
