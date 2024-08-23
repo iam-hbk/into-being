@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { Great_Vibes,Urbanist as FontSans } from "next/font/google";
-import { Analytics } from '@vercel/analytics/react';
+import { Great_Vibes, Urbanist as FontSans } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 import { Navbar } from "@/components/nav-bar";
 import { cn } from "@/lib/utils";
@@ -19,8 +19,27 @@ const fontGreatVibes = Great_Vibes({
   variable: "--font-great-vibes",
 });
 export const metadata: Metadata = {
-  title: "Into Being",
-  description: "Recruitment Agency",
+  title: {
+    default: "Intobeing Placements",
+    template: "%s | Intobeing Placements",
+  },
+  description: "Recruitment Agency - Niche Specialisation",
+  openGraph: {
+    title: {
+      default: "Intobeing Placements",
+      template: "%s | Intobeing Placements",
+    },
+    description: "Recruitment Agency - Niche Specialisation",
+
+    images: [
+      {
+        url: "/default-og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Intobeing Placements",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
@@ -33,7 +52,8 @@ export default function RootLayout({
       <body
         className={cn(
           "relative min-h-screen bg-background font-sans antialiased",
-          fontSans.variable,fontGreatVibes.variable
+          fontSans.variable,
+          fontGreatVibes.variable,
         )}
       >
         <ThemeProvider
@@ -43,7 +63,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Navbar />
-          <nav className="sticky top-0 z-50 sm:hidden h-0">
+          <nav className="sticky top-0 z-50 h-0 sm:hidden">
             <MobileNav />
           </nav>
           <main>{children}</main>
