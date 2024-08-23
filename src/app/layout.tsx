@@ -19,6 +19,7 @@ const fontGreatVibes = Great_Vibes({
   variable: "--font-great-vibes",
 });
 export const metadata: Metadata = {
+  metadataBase: new URL('https://intobeingplacements.co.za/'),
   title: {
     default: "Intobeing Placements",
     template: "%s | Intobeing Placements",
