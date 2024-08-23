@@ -52,7 +52,7 @@ const Services = (props: Props) => {
         >
           Our Services
         </div>
-        <p className="max-w-screen-sm text-wrap px-5 text-center leading-7 sm:py-2 [&:not(:first-child)]:mt-4">
+        <p className="max-w-screen-sm text-wrap px-5 text-center text-xl leading-7 sm:py-2 [&:not(:first-child)]:mt-4">
           Our recruiting expects are available to you across all sectors and
           industries; We assess skills and achievement and fulfill comprehensive
           career planning which is made available to clients Engineering,

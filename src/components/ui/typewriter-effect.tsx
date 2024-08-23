@@ -203,7 +203,7 @@ export const TypewriterEffectEditable = ({
   return (
     <TypeAnimation
       className={cn(
-        "text-primary-content text-center text-2xl font-bold flex items-center justify-center",
+        "text-primary-content text-center text-4xl font-bold flex items-center justify-center",
         className,
       )}
       style={{ whiteSpace: "pre-line" }}

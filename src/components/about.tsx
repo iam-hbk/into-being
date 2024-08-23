@@ -15,7 +15,7 @@ const AboutUs = (props: Props) => {
         >
           About Us
         </div>
-        <p className="max-w-screen-sm text-wrap text-center leading-7 sm:py-2 [&:not(:first-child)]:mt-4">
+        <p className="max-w-screen-sm text-wrap text-xl text-center leading-7 sm:py-2 [&:not(:first-child)]:mt-4">
           <b className="font-bold text-primary">IntoBeing Placements</b> is a
           specialized recruitment agency focusing on{" "}
           <b className="font-bold text-primary"> Finance, IT, and Legal</b>{" "}

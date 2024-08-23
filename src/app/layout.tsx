@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Great_Vibes,Urbanist as FontSans } from "next/font/google";
+import { Analytics } from '@vercel/analytics/react';
 import "./globals.css";
 import { Navbar } from "@/components/nav-bar";
 import { cn } from "@/lib/utils";
@@ -49,6 +50,7 @@ export default function RootLayout({
           <Footer />
           <Toaster richColors />
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
